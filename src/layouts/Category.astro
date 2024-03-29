@@ -1,0 +1,66 @@
+---
+const categories = [
+  {
+    name: "Technology",
+    slug: "tech",
+  },
+  {
+    name: "Finance",
+    slug: "finance",
+  },
+];
+const { current } = Astro.props;
+---
+
+<div class="flex flex-wrap">
+  {
+    categories.map((category) => {
+      return (
+        <>
+          <a
+            class={`${
+              category.slug == current
+                ? "bg-neutral-400 text-black"
+                : "text-neutral-400 bg-neutral-800"
+            } hover:bg-neutral-400 hover:text-black border border-transparent flex-shrink-0 group mb-2 mr-2 px-3 py-1.5 rounded-lg sm:w-auto text-sm w-full`}
+            id={category.slug}
+            href={`/${category.slug}`}
+          >
+            {category.name}
+          </a>
+        </>
+      );
+    })
+  }
+</div>
+
+{
+  /* 
+<script>
+  import { blogData } from "../constants/blogData";
+
+  const handleClick = (divele) => {
+    let eleId = divele.firstElementChild.id;
+    let contentDiv = document.getElementById("content");
+    contentDiv.innerHTML = "";
+    for (let i = 0; i < blogData.length; i++) {
+      if (blogData[i].category == eleId) {
+        contentDiv.innerHTML += `<a class="hover:text-white cursor-pointer flex flex-col group items-start justify-between py-2 sm:flex-row sm:items-center sm:py-4 sm:text-2xl text-md text-neutral-500 transition-colors" href=${
+          "/" + blogData[i].category + "/" + blogData[i].slug
+        } id=${blogData[i].category}>
+            <span class="text-white">${blogData[i].title}</span>
+            <span class="sm:text-lg mt-1 sm:mt-0 text-sm">${
+              blogData[i].date
+            }</span>
+            </a>`;
+      }
+    }
+  };
+  const ele = document.getElementsByClassName("categories");
+
+  for (let i = 0; i < ele.length; i++) {
+    ele[i].addEventListener("click", () => handleClick(ele[i]));
+  }
+</script>
+*/
+}

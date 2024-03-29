@@ -1,0 +1,177 @@
+---
+import HTML from "../../layouts/HTML.astro";
+import Header from "../../layouts/Header.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Content from "../../layouts/Content.astro";
+import Footer from "../../layouts/Footer.astro";
+import Tags from "../../layouts/Tags.astro";
+import LINK from "../../layouts/LINK.astro";
+import QUOTE from "../../layouts/QUOTE.astro";
+
+const blogTitle = "Quantum Computers can stop time!";
+const blogDescription =
+  "Scientists figured out how to stop time using quantum algorithms";
+const blogDate = "19 January, 2021";
+const readingTime = 5;
+const tags = ["Quantum Coputing", "Machine Learning"];
+---
+
+<HTML title={blogTitle} description={blogDescription}>
+  <Header />
+  <Container>
+    <SubHeading
+      title={blogTitle}
+      subtitle={blogDate}
+      readingTime={readingTime}
+    />
+    <Tags tags={tags} />
+    <Content>
+      <p>
+        If anyone would get a superpower, then most of us would ask for the
+        power to stop the time, who doesn’t like to stop the time and take a
+        break for months? Well for humans it seems impossible, but not for
+        computers. Everyone’s always talking about traveling through time and
+        some legends like Albert Einstein also proposed the theory of
+        relativity.
+      </p>
+      <p>
+        A pair of studies about quantum algorithms, from independent research
+        teams, recently graced the <LINK
+          text="arXiv preprint"
+          url="https://arxiv.org/"
+        /> servers. They’re both basically about the same thing: using clever
+        algorithms to solve nonlinear differential equations.
+      </p>
+      <p>
+        And if you observe like a squint at them through the lens of Soft
+        Science and if you have a little knowledge of science then you could
+        realize, as I have, that they’re a recipe for computers that can
+        basically stop time in order to solve a problem requiring a
+        near-immediate solution.
+      </p>
+      <p>
+        Remembered your high school mathematics where you learned to solve the
+        linear equations by hand? Well those linear equations are a piece of
+        cake for the modern computers. Computers just crunch the numbers and
+        find the pattern in the linear relationship of the equation (If you know
+        about Linear Regression Machine Learning model, you could relate). But
+        non-linear equations are the real thing and the <LINK
+          text="non-linear differential equations"
+          url="http://math.uchicago.edu/~may/REU2017/REUPapers/Thomas.pdf"
+        /> are tougher.
+      </p>
+      <p>
+        Now you can ask can a computer solve such tough equations? Well humans
+        are still preparing for this. Do you remembered how Google showed their <LINK
+          text="Quantum Supremacy"
+          url="https://www.youtube.com/watch?v=-ZNEzzDcllU"
+        />? We humans are still building the quantum computers and the hope is
+        that one day quantum computers will break the difficulty barrier and
+        make these hard-to-solve problems seem like ordinary compute tasks.
+      </p>
+      <p>
+        When computers solve these kinds of problems, they’re basically
+        predicting the future. Today’s AI can still predict the next movies you
+        should watch if you provide the enough data. You can add a few more
+        movies to the equation and the computer will still get it right most of
+        the time.
+      </p>
+      <p>
+        But if you reach the point where scale of interactivity just provides
+        the feedback and doesn’t resembles any meaning, such as observing the
+        evaporation of water and predicting where does the air flow for the next
+        few seconds or, for example spreading feathers up in the sky and
+        predicting the movement of a feather, a classical computers doesn’t have
+        such computational power to calculate the physics at that scale.
+      </p>
+      <p>
+        This tell us why we still can’t predict the weather. There are so many
+        interactions or factors that affect the weather which becomes harder for
+        the computer to predict the weather.
+      </p>
+      <p>
+        But with quantum computers you bypass the binary rules of classical
+        computing. A classical or a normal computers understand just 0 and 1,
+        right? But quantum computers doesn’t obey the binary rules. Quantum
+        computers not only can represent 0 and 1 but also they can represent 1
+        while 0 and 0 while representing 1. Understand this concept by the sides
+        of coin. A normal computer can either show Head or Tail of coin but
+        Quantum can show Tail while showing Head and also can show Head while
+        showing Tail and surprisingly they can even show nothing, neither Head
+        nor Tail. Isn’t this amazing? For our purposes, this means they can
+        potentially solve difficult problems such as “where is every single
+        piece of feather going to be in .02 seconds?” or “What is the optimal
+        route for the air that evaporated”.
+      </p>
+      <p>
+        In order to understand the whole idea behind this concept, we can refer
+        some robust research papers. The first one comes from the University of
+        Maryland which say,
+      </p>
+      <QUOTE>
+        In this paper we have presented a quantum Carleman linearization (QCL)
+        algorithm for a class of quadratic nonlinear differential equations.
+        Compared to the previous approach of, our algorithm improves the
+        complexity from an exponential dependence on T to a nearly quadratic
+        dependence, under the condition R &lt; 1.
+      </QUOTE>
+      <p>
+        And let’s take a peek at the second paper. This one’s from a team at
+        MIT:
+      </p>
+      <QUOTE>
+        This paper showed that quantum computers can in principle attain an
+        exponential advantage over classical computers for solving nonlinear
+        differential equations. The main potential advantage of the quantum
+        nonlinear equation algorithm over classical algorithms is that it scales
+        logarithmically in the dimension of the solution space, making it a
+        natural candidate for applying to high dimensional problems such as the
+        Navier-Stokes equation and other nonlinear fluids, plasmas, etc..
+      </QUOTE>
+      <p>
+        Both papers are fascinating but for now let me simplify it. The paper
+        shows the detail how we can build algorithms for quantum computers to
+        solve those really hard problems.
+      </p>
+      <p>
+        So what does that mean? We hear about how quantum computers can solve
+        drug discovery or giant math problems but what happens behind the
+        scenes? What I mean is If classical computers can give us the power to
+        land a rover on the moon, then what this quantum computers going to do?
+      </p>
+      <p>
+        Now it’s easier for you to believe that it’s potentially going to give
+        quantum computers the ability to essentially stop time. Now, as you can
+        imagine, this doesn’t mean any of us will get a remote control with a
+        pause button on it to stop time while in an examination hall.
+      </p>
+      <p>
+        What it means that <span class="italic">
+          the powerful-enough quantum computer running the greatest of the
+          greatest, highly customized and trained algorithms that developed
+          today (which of course will get better in future) might hold the
+          ability to determine the particle-level physics state of any element
+          with the enough speed and accuracy that will eventually surpass the
+          speed of time and make it non-factor and by which time will have no
+          longer have any effect on the element during the execution of the
+          algorithm.
+        </span>
+      </p>
+      <p>
+        So, theoretically, if someone in the future threw a handful of marbles
+        or glitters or feathers at you and you had the access to quantum-powered
+        defense drones, they could instantly respond by perfectly positioning
+        themselves between you and the particles coming from the marbles to
+        protect you. And yes they can predict the weather too with near-perfect
+        accuracy over extremely long periods of time.
+      </p>
+      <p>
+        This ultimately means quantum computers could one day operate in a time
+        resistant world, solving problems at nearly infinitely small moment of
+        time which can literally break or stop the time to affect it.
+      </p>
+    </Content>
+  </Container>
+  <Footer />
+</HTML>

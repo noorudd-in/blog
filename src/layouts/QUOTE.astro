@@ -1,0 +1,16 @@
+---
+const { cite } = Astro.props;
+---
+
+<blockquote
+  cite={cite}
+  class="text-neutral-400 hover:text-white cursor-pointer"
+>
+  <div class="flex">
+    <span class="text-3xl sm:text-5xl">&#x301D</span>
+    <p class="italic">
+      <slot />
+    </p>
+    <span class="flex items-end text-3xl sm:text-5xl">&#x301E</span>
+  </div>
+</blockquote>

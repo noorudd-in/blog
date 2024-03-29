@@ -1,0 +1,260 @@
+---
+import HTML from "../../layouts/HTML.astro";
+import Header from "../../layouts/Header.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Content from "../../layouts/Content.astro";
+import Footer from "../../layouts/Footer.astro";
+import Tags from "../../layouts/Tags.astro";
+import LINK from "../../layouts/LINK.astro";
+import { Code } from "astro-expressive-code/components";
+import {
+  C1,
+  C2,
+  C3,
+  C4,
+  C5,
+  C6,
+  C7,
+  C8,
+  C9,
+  C10,
+  C11,
+} from "../../constants/codeBlocks";
+
+const blogTitle = "Hyper-parameter Tuning with Custom GridSearchCV";
+const blogDescription =
+  "Under how to implement Hyper-parameter Tuning with Custom GridSearchCV";
+const blogDate = "10 July, 2021";
+const readingTime = 8;
+const tags = ["Machine Learning", "Data Science"];
+---
+
+<HTML title={blogTitle} description={blogDescription}>
+  <Header />
+  <Container>
+    <SubHeading
+      title={blogTitle}
+      subtitle={blogDate}
+      readingTime={readingTime}
+    />
+    <Tags tags={tags} />
+    <Content>
+      <p>
+        Typically in Machine Learning, we split our datasets into two parts,
+        i.e. training(70% usually) and testing(30% usually) datasets. If we are
+        working on a classification problem where we have X as a feature and Y
+        as a label, we split data as <span class="font-semibold">X_train</span>,
+
+
+        <span class="font-semibold">X_test</span>, and <span
+          class="font-semibold">Y_train</span
+        >, <span class="font-semibold">Y_test</span>. What we usually do is,
+        train and fit the model on the training dataset and test the model on
+        the testing dataset. We usually find the accuracy by comparing the
+        values that our model predicted on test data with actual data. The
+        problem with this method is whenever your model encounters new data in
+        the real world, the accuracy is no more the same. You may see how your
+        model fails miserably. To solve such problems, researchers have come up
+        with various methods in which one way is to use Cross-Validation while
+        splitting data.
+      </p>
+      <h2>Cross-Validation</h2>
+      <p>
+        To understand this, we will take an example of the KNN Algorithm. What
+        we usually do is split our data into three parts instead of two viz
+        training data(60%), cv data(20%), and testing data(20%). NOTE: It's not
+        always 60–20–20, some people prefer 70–10–20 and some others. Now in
+        K-NN, we use training data to train and fit the model, basically, we are
+        finding all the nearest neighbors for each point in our dataset. CV data
+        is used to find the optimal K (K in K-NN is referred to as
+        hyper-parameter, selecting the right K is crucial. In simple words, K is
+        the number of nearest neighbor that is to be selected while applying
+        K-NN). CV data is used to find the accuracy for multiple K and the K
+        with the highest accuracy is considered as optimal K. Say, when K was 5,
+        we got the highest accuracy of our model i.e. 95%. Now if we use the
+        optimal K and trained model and test it on testing data and say we get
+        around 93% of accuracy, we now are more certain that our model will give
+        high accuracy in real-world cases too as our model hasn’t seen the test
+        data during the training and also during finding the best K.
+      </p>
+      <p>
+        But still, there is one problem that needs to be addressed. If we split
+        our data into 60–20–20 ratio, where 60% is used for training purposes,
+        we are certainly losing 40% information while using 60% information to
+        train our model is not a suitable way in the real world. To encounter
+        this, researchers have come up with many modifications and we are going
+        to learn one in this article.
+      </p>
+      <h2>GridSearchCV</h2>
+      <p>
+        Split the data into two parts, 80% of the data will be used as training
+        data while 20% will be used as testing data. The training dataset is now
+        further divided into four parts with 20% of each, say D1, D2, D3, D4
+        blocks.
+      </p>
+      <img
+        src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*-aQaFTcWMDCdB9GhMFpIiQ.png"
+        alt="Splitting data into training and testing "
+      />
+      <p>
+        Now, for 1st time, we will use blocks D1, D2, D3 as a training dataset
+        to train our model, while D4 will be used as CV data with K=1 to find
+        the accuracy of the model i.e 81%. The second combination with blocks
+        D1, D2, D4 as training data and D3 as CV data for K=1 will accuracy of
+        85%. The third combination for K=1 will give 85% accuracy and the fourth
+        one will give 84% accuracy. Once we have used all the combinations, we
+        now take the averages of all the accuracies for K=1. This way we can
+        smartly use 80% of the data as training without losing much information
+        as we have seen in the previous case. NOTE: We have still not used the
+        D5 or test data so, for K=1, we can test our model and can expect the
+        test accuracy to be sustainable for the real world cases too. One can
+        try such combinations for multiple K, K=1, 3, 5, … and can find the
+        optimal K which gives the highest accuracy, which in our case is K=5
+        with an accuracy of 93%. So, if we test our model with K=5 on our
+        testing data and say we get similar accuracy, we are now more certain
+        that our model will give similar accuracy on real data too.
+      </p>
+      <img
+        src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*iosRrbRTsHmA1LWmoGi3WQ.png"
+        alt="Grid like combinations of K vs number of folds"
+      />
+      <p>
+        Such a method to find the best hyper-parameter (K in K-NN) by making a
+        grid (see the above image) is known as GridSearchCV. Let’s implement
+        GridSearchCV from scratch using Python without using Sklearn. You can
+        also use the Sklearn library which is more efficient in its own way.
+      </p>
+      <h2>Implementing Custom GridSearchCV</h2>
+      <Code code={C1} lang="py" />
+      <p class="text-am">
+        We will be using <span class="highlight">make_classification</span> from
+
+
+        <span class="highlight">sklearn.datasets</span> which will help us to
+        create clusters of points (for classification problem) with various
+        parameters such as <span class="highlight">n_samples</span> for the
+        number of samples, <span class="highlight">n_features</span>
+         defines the number of features that we want, <span class="highlight"
+          >n_informative</span
+        > defines which features you want to be informative, <span
+          class="highlight">n_redundant defines</span
+        > which features you want to be redundant or useless, <span
+          class="highlight">random_state</span
+        > if set to any specific number will return the same random data every
+        time which helps you to share the same randomly selected data with
+        anyone.
+      </p>
+      <Code code={C2} lang="py" />
+      <p>
+        Define a function that takes five input x_train , y_train , classifier
+        in our case classifier is KNN, parameter such as n_neighbors, folds our
+        number of cv folds. Initially, we are defining two empty lists
+        trainscores and testscoreswhich stores all the accuracy that we have got
+        during training and testing of n number of K with n number of folds.
+      </p>
+      <Code code={C3} lang="py" />
+      <p>
+        The first for loop will take different values of K which is stored in a
+        variable parameter as a set of lists.parameter={
+          `{'n_neighbors':[1,3,5,7,9,11,13,15,17,19,21,23,25,27,29]}`
+        } We will iterate K from 1 to 30 odd numbers since in KNN if K is even,
+        deciding the class label will be difficult if we get an even number of
+        neighbors.
+      </p>
+      <Code code={C4} lang="py" />
+      <p>
+        This second loop will select the number of k_folds for each K. So if
+        K=1, and cv_folds=4 we get four iterations, K1F0, K1F1, K1F2, K1F3 where
+        K1 is K=1 and F0 to F4 are F=0 to 3. As we have taken multiple K from 1
+        to 29, we will get 15*4=60 combinations from K1F0, K1F1, K1F2, K1F3,
+        K2F0…. to K29F3. As I have said earlier, we will be splitting our data
+        into 2 parts i.e 80% of data will be training data + cv data and 20%
+        will testing data. So in the second line, already have 80% of
+        training+cv data from which we are splitting 60% data to training and
+        the remaining 20% to cv data. The third line simply means the remaining
+        data is given to cv_data. The function for splitting our data randomly
+        into 60% without creating duplicates is as follows:
+      </p>
+      <Code code={C5} lang="py" />
+      <p>
+        The above function basically takes x_train data and returns 60% randomly
+        sample data ranging from 0 to length of training data without
+        duplicates.
+      </p>
+      <Code code={C6} lang="py" />
+      <p>
+        As we have split data into training and cv data, it's important to
+        differentiate X_train X_cv Y_train Y_cv mapped by our training and
+        cv_data.
+      </p>
+      <Code code={C7} lang="py" />
+      <p>
+        We are assigning n_neighbors as the number of k given by the users and
+        then fitting the model using X_train and Y_train
+      </p>
+      <Code code={C8} lang="py" />
+      <p>
+        Once the model is trained, we will predict the X_cv and will compare it
+        with the given Y_cv to compute the accuracy. The accuracy will be stored
+        in the cv_fold_scores list we already created. Similarly, we will
+        predict X_train and compare it with Y_train to compute accuracy and
+        store it in training_fold_scores. In our example, we have created
+        cv_fold=4 so we get four accuracies for each K.
+      </p>
+      <Code code={C9} lang="py" />
+      <p>
+        Take the mean of four accuracies and append the average in the
+        trainscores and testscores list respectively. See Fig 2 to understand in
+        visual. The function now has been created and we can test our function
+        on the dataset.
+      </p>
+      <p>Here is the full code of the function:</p>
+      <Code code={C10} lang="py" title="grid_search_cv.py" />
+      <h2>Testing Our Function</h2>
+      <Code code={C11} lang="py" />
+      <p>
+        Here we are creating a dataset of 10,000 samples with 2 informative
+        features and 0 redundant features (n_redundant should be equal to 0, by
+        default is 2). After splitting data into X and Y train and test,
+        training data is 7500, and test data is 2500. If we visualize the
+        features and label of the data, it would be something similar to below:
+      </p>
+      <img
+        src="https://miro.medium.com/v2/resize:fit:768/format:webp/1*gJFokvqcAPezaHTBQlktJQ.png"
+        alt="Graph"
+        class="bg-white"
+      />
+      <p>
+        After applying our function to the above dataset, we can identify the
+        optimal K or the best hyper-parameter. Below is the plot of
+        Hyper-parameter VS Accuracy.
+      </p>
+      <img
+        src="https://miro.medium.com/v2/resize:fit:800/format:webp/1*ISL341HQJVWMnb2PN1za3Q.png"
+        alt="Comparison Graph"
+        class="bg-white"
+      />
+      <p>
+        The highest K you can see for Test data is around 15 with an accuracy of
+        87.5%. See the below figure.
+      </p>
+      <img
+        src="https://miro.medium.com/v2/resize:fit:800/format:webp/1*3P9PWqjraYAEZPhnnGPxrA.png"
+        alt="Comparison Graph"
+        class="bg-white"
+      />
+      <p>
+        For detailed and step by step code, refer to my <LINK
+          text="GitHub"
+          url="https://github.com/noor12401/Machine-Learning/tree/main/Implementing%20Custom%20GridSearchCV"
+        />
+         or <LINK
+          text="Colab"
+          url="https://colab.research.google.com/drive/1LVt0p07240f21pJPv2stvTrF6JwfNOZy?usp=sharing"
+        />
+      </p>
+    </Content>
+  </Container>
+  <Footer />
+</HTML>

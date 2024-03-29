@@ -1,0 +1,118 @@
+---
+import HTML from "../../layouts/HTML.astro";
+import Header from "../../layouts/Header.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Content from "../../layouts/Content.astro";
+import Footer from "../../layouts/Footer.astro";
+import Tags from "../../layouts/Tags.astro";
+import LINK from "../../layouts/LINK.astro";
+import QUOTE from "../../layouts/QUOTE.astro";
+
+const blogTitle = "The real difference between == and === in JavaScript";
+const blogDescription =
+  "Comapring Equality vs Strict Equality Comparison in JS";
+const blogDate = "25 August, 2023";
+const readingTime = 3;
+const tags = ["Programming"];
+---
+
+<HTML title={blogTitle} description={blogDescription}>
+  <Header />
+  <Container>
+    <SubHeading
+      title={blogTitle}
+      subtitle={blogDate}
+      readingTime={readingTime}
+    />
+    <Tags tags={tags} />
+    <Content>
+      <p>
+        If you have worked with programming languages, you know that all
+        programming languages have a comparison operator, i.e. ==, which is used
+        to compare two values. But JS took this one step further. JS also has a
+        === operator, which is known as Strict Equality Comparison.
+      </p>
+      <p>
+        If you search the difference between == and === in JS on the internet,
+        all the articles will claim:
+      </p>
+      <QUOTE>
+        == check the values whereas === check both values and the types of both
+        value.
+      </QUOTE>
+      <p>And you are totally <span class="font-semibold">WRONG!</span></p>
+      <p>
+        Before creating our own conclusion, let’s first see what the official
+        documentation of JavaScript has to say! If you check the official <LINK
+          text="ECMAScript documentation under point 7.2.14"
+          url="https://262.ecma-international.org/12.0/#sec-abstract-equality-comparison"
+        /> it says,
+      </p>
+      <img
+        src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*cVYRUgIdZRsb2r7j3abbqg.png"
+        alt="Official EMCAScript Documentation."
+      />
+      <p>
+        The first line itself says that == check the types of “x” and “y”; if
+        both the types are the same then it will call === internally! Now let’s
+        see the documentation of === below.
+      </p>
+      <img
+        src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qU0IIA1HZklnXcYVzUp0vg.png"
+        alt="Official EMCAScript Documentation."
+      />
+      <p>
+        Here you can see === will also check if both the types are equal or not.
+        If the types of “x” and “y” are not the same, it will straightaway give
+        false without even checking the values.
+      </p>
+      <p>So what’s exactly happening here? Let’s simply this!</p>
+      <p>
+        <span class="font-semibold"
+          >If you use == (e.g.: x == y), it will first check the types of x and
+          y then:</span
+        >
+      </p>
+      <ul>
+        <li>
+          If the types of both the operands are the same, it will call === to
+          perform further operation
+        </li>
+        <li>
+          If types are not equal, then it will do type conversion (also known as
+          coercion in JavaScript). Once done, it will return true or false by
+          comparing the values
+        </li>
+      </ul>
+      <p>
+        <span class="font-semibold"
+          >If you use === (e.g.: x === y), it will first check the types of x
+          and y, then:</span
+        >
+      </p>
+      <ul>
+        <li>
+          If both the operands type are not equal, it will simply return false
+        </li>
+        <li>
+          If both the operand types are equal, it can simply check the value and
+          can return true or false
+        </li>
+      </ul>
+      <h3>So what’s the actual difference between == and ===?</h3>
+      <QUOTE>
+        == and === both checks the types, it just that == performs coercion
+        (type conversion) whereas === doesn’t.
+      </QUOTE>
+      <p>
+        If you look closely, it actually makes sense why JavaScript maker did
+        this. When you use == on two different types of operands, for e.g., “14”
+        == 14, which returns true, JS needs to convert the “14” to 14 and to do
+        so JS need to first check the types of both the operands. Without
+        checking types, JS cannot just convert the types randomly.
+      </p>
+    </Content>
+  </Container>
+  <Footer />
+</HTML>

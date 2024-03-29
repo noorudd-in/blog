@@ -1,0 +1,24 @@
+---
+const { title, subtitle, readingTime } = Astro.props;
+---
+
+<div class="mt-5 sm:mt-4 mb-5">
+  <h1 class="text-white font-bold mb-2 sm:text-7xl text-3xl">
+    {title}
+  </h1>
+  <div class="flex">
+    {
+      readingTime && (
+        <>
+          <div class="text-neutral-400 sm:text-xl text-md">
+            {readingTime} min read
+          </div>
+          <div class="text-neutral-400 sm:text-xl text-md mx-2">&#183;</div>
+        </>
+      )
+    }
+    <div class="text-neutral-400 sm:text-xl text-md">
+      {subtitle}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+---
+import HTML from "../layouts/HTML.astro";
+import Container from "../layouts/Container.astro";
+import SubHeading from "../layouts/SubHeading.astro";
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
+import Category from "../layouts/Category.astro";
+import { blogData } from "../constants/blogData";
+import "../base.css";
+---
+
+<HTML
+  title="Financial Blogs"
+  description="All my written blogs related to financial growths!"
+>
+  <Header />
+  <Container>
+    <SubHeading
+      title="Nooruddin Shaikh"
+      subtitle="Understanding finance, rupee by rupee."
+    />
+    <Category current="finance" />
+
+    <div class="divide-neutral-500 divide-y" id="content">
+      {
+        blogData.map((blog) => {
+          if (blog.category == "finance") {
+            return (
+              <a
+                class="hover:text-white cursor-pointer flex flex-col group items-start justify-between py-2 sm:flex-row sm:items-center sm:py-4 sm:text-2xl text-md text-neutral-500 transition-colors"
+                href={`/${blog.category}/${blog.slug}`}
+                id={blog.category}
+              >
+                <span class="text-white">{blog.title}</span>
+                <span class="sm:text-lg mt-1 sm:mt-0 text-sm">{blog.date}</span>
+              </a>
+            );
+          }
+        })
+      }
+    </div>
+  </Container>
+  <Footer />
+</HTML>

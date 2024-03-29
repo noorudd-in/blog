@@ -1,0 +1,24 @@
+---
+import Container from "./Container.astro";
+import LINK from "./LINK.astro";
+const currentYear = new Date().getFullYear();
+---
+
+<Container>
+  <footer
+    class="text-neutral-400 sm:text-xl mt-5 pt-5 sm:mt-16 text-base text-center"
+  >
+    <div class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-1">
+      <div class="col-span-1 sm:py-2 py-1">
+        © {currentYear} | Written with ❤️ from India 🇮🇳
+      </div>
+      <div class="col-span-1 sm:py-2 py-1">
+        Site created with
+        <LINK url="https://astro.build/" text="Astro" /> | <LINK
+          url=""
+          text="Source code"
+        />
+      </div>
+    </div>
+  </footer>
+</Container>

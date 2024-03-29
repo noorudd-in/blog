@@ -1,0 +1,130 @@
+---
+import HTML from "../../layouts/HTML.astro";
+import Header from "../../layouts/Header.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Content from "../../layouts/Content.astro";
+import Footer from "../../layouts/Footer.astro";
+import Tags from "../../layouts/Tags.astro";
+
+const blogTitle = "Is Data Science a Hype?";
+const blogDescription = "AI will take you job!";
+const blogDate = "31 January, 2021";
+const readingTime = 3;
+const tags = ["Artificial Intelligence", "Data Science", "Machine Learning"];
+---
+
+<HTML title={blogTitle} description={blogDescription}>
+  <Header />
+  <Container>
+    <SubHeading
+      title={blogTitle}
+      subtitle={blogDate}
+      readingTime={readingTime}
+    />
+    <Tags tags={tags} />
+    <Content>
+      <p>
+        You have seen a rising trend in Machine Learning or Artifical
+        Intelligence and you may have came across people quoting <span
+          class="italic">'Data Science is just a hype'</span
+        >. But is it true?
+      </p>
+      <p>
+        The straightforward answer is “No, There is soo much scope than you can
+        comprehend. And there will be even more in the future.” Then what
+        stopping companies to hire Data Scientists? Why it’s hard to land a job
+        in Data Science? Why companies still ask for such diverse experience and
+        knowledge? To understand this let us see what do companies do with the
+        data and how they handle it.
+      </p>
+      <h2>Automated Softwares</h2>
+      <p>
+        Companies have already best practiced the data, about storing and
+        retrieving data, many developers have taken such tasks. In
+        billion-dollar companies, there is software already that can generate
+        direct reports given a chunk of data with minimal human effort. The
+        machine produces the best visualization too. Companies are already using
+        tools like MicroStrategy, Looker, Domo, etc.
+      </p>
+      <h2>Every Data on Purpose</h2>
+      <p>
+        Say a client is asking you to build an application that uses the data
+        from their database and does some tasks (say it performs recommendations
+        and analytics). So here Data Engineers study and understand the various
+        parameters on what data transformations and endpoint need to be applied.
+        Then they do some visualizations and builds a pipeline that supplies the
+        necessary data through endpoints. If necessary, the ML Engineers creates
+        the model and test-train it. Then the application is built by SDEs, ML
+        Engineers, Data Scientists, Data Analysts, and some more. And yes, it’s
+        not at all easy work, of course, you are guided by the experts and you
+        learn a lot during building such a huge project.
+      </p>
+      <p>
+        But here are some points that need to be noted! Say you are a fresher,
+        and building such a project will take a time to learn, adapt, and
+        enforce the standards within a given amount of time. The time which you
+        require is large enough than the time given by the client, so the
+        company won’t be taking any risks and they will assign the project to an
+        experienced data scientist.
+      </p>
+      <p>
+        There are so many simple yet twisted decisions needed to be taken by you
+        as a developer to complete the project. And the company expects you to
+        tackle it in such a way that it will not haunt back in the future. The
+        company still hesitate to allow freshers to take decisions on such
+        project. They want people who also have domain expertise so such
+        decisions are taken correctly. I mean as a fresher, you cannot just keep
+        asking what to do next!
+      </p>
+      <p>
+        Programming…As some great developers said, “If you write a clean and
+        understandable code, you are saving someone in the future from mental
+        torture.” And that someone can be you. Freshers still focus on “How to
+        solve complex problems?” rather than “How to write clear, clean, and
+        understandable code”
+      </p>
+      <p>
+        So? You and everyone can get into Data Science, but the bar is just set
+        high. If everyone wants experts then what will happen to freshers? And
+        that’s the problem.
+      </p>
+      <p>
+        Like if you ask a fresher or not experienced one “What task does the
+        company give you?” They would say:
+      </p>
+      <ul>
+        <li>Building pipelines (ETL Work)</li>
+        <li>Doing some EDT</li>
+        <li>
+          Building small applications to handle data for a specific purpose
+        </li>
+        <li>Working in Excel, PowerBI, or Tableau</li>
+        <li>Heavy work on statistical tests and reporting inferences</li>
+        <li>Labelling, Cleaning Data</li>
+        <li>Reporting (which is common)</li>
+      </ul>
+      <p>
+        Then where is all the cutting edge and hype stuffs done? like Image
+        Segmentation, GPT-3, DALL-E, Transformers, AI Robotics, Virtual Worlds,
+        and much more. The answer is: Mostly the juicy stuff is done in
+        Company’s Research Department and they make prototypes, Implementation
+        really takes a long time.
+      </p>
+      <p>
+        Just remember, Whatever technology you create, if you can generate
+        business from what you build and help the company in getting more money,
+        then only companies are interested! It’s sure AI is hyped but
+        understanding the applications and implementations is a crucial thing.
+      </p>
+      <h2>Conclusion</h2>
+      <p>
+        There is a long way to go my friend, just do and stick to whatever is
+        your interest, but also think about the future, do some analysis. Don’t
+        push the wall too hard, see whether we are pushing the wall or is there
+        really a door!
+      </p>
+    </Content>
+  </Container>
+  <Footer />
+</HTML>

@@ -1,0 +1,11 @@
+---
+const { text, url } = Astro.props;
+---
+
+<a
+  href={url}
+  rel="external"
+  class="underline underline-offset-4 text-emerald-300 font-semibold cursor-pointer hover:no-underline"
+  title={`View ${text}`}
+  target="_blank">{text}</a
+>

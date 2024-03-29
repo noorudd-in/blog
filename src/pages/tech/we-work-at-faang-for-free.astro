@@ -1,0 +1,77 @@
+---
+import HTML from "../../layouts/HTML.astro";
+import Header from "../../layouts/Header.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Content from "../../layouts/Content.astro";
+import Tags from "../../layouts/Tags.astro";
+import Footer from "../../layouts/Footer.astro";
+
+const blogTitle = "We work at FAANG for free";
+const blogDescription =
+  "If you are not paying for the product, then you are the product";
+const blogDate = "17 December, 2020";
+const readingTime = 2;
+const tags = ["Big Data"];
+---
+
+<HTML title={blogTitle} description={blogDescription}>
+  <Header />
+  <Container>
+    <SubHeading
+      title={blogTitle}
+      subtitle={blogDate}
+      readingTime={readingTime}
+    />
+    <Tags tags={tags} />
+    <Content>
+      <p>
+        Imagine a factory where nameless workers are working day and night to
+        produce expensive products. These expensive products are shipped
+        instantly all over the world to a wealthy buyers generating more than
+        $200 millions per day for that factory.
+      </p>
+      <p>
+        What if I say those worker doesn’t charge a penny to produce such
+        expensive products?
+      </p>
+      <p>Sounds impossible, right?</p>
+      <p>
+        But everyone on earth is already doing such tasks for free! <span
+          class="bold">YOU ARE FREE LABORER!</span
+        > This is the modern system created by big tech companies.
+      </p>
+      <p>
+        Big Tech companies such as FAANG provides us the great tools in our
+        hands like Search, Entertainment, Social Connectivity, Productivity,
+        News Feed and many other services where some of them are free as sweet
+        and tell us our lives will be better with them. But in reality those
+        sweet turns out to be poison where we are giving them free labor.
+      </p>
+      <p>
+        Every time we browse a site, comment, like, subscribe, purchase,
+        connect, surf, scroll, we are just mining the billion dollar gold bars
+        for them. Using such platforms, we are simply generating data on their
+        server which they serves to other big companies to make each other rich.
+        This is the free labor agreement that we all have signed when we entered
+        the internet world. Data goes out, money comes in ($2 Trillion every
+        year). Where is our piece? Aren’t we the ones making the product?
+      </p>
+      <p>
+        Generating data helps them to provide us the service better but our data
+        is still worth more than that. This data war is a decade old but aren’t
+        we as a consumer making such expensive products for free? So should they
+        pay us? Should we charge them before using internet? Well, here the
+        irony is we are paying the internet bills just to generate the expensive
+        data for free. It’s still debatable topic where user need to understand
+        how their data is worthy, maybe not for them but certainly for such big
+        companies.
+      </p>
+      <p>
+        After all, in this internet world we are building, our data shouldn’t be
+        distributed for free.
+      </p>
+    </Content>
+  </Container>
+  <Footer />
+</HTML>
