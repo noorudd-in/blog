@@ -1,0 +1,26 @@
+---
+import HTML from "../layouts/HTML.astro";
+import Container from "../layouts/Container.astro";
+import Header from "../layouts/Header.astro";
+import Content from "../layouts/Content.astro";
+import LINK from "../layouts/LINK.astro";
+import pageNotFoundImg from "../images/404.jpg";
+---
+
+<HTML title="404 Page" description="Page not found!">
+  <Header />
+  <Container>
+    <Content>
+      <div class="text-center">
+        <h3>
+          Page not found. Let's go to <LINK
+            text="homepage"
+            url="/"
+            target="false"
+          />!
+        </h3>
+        <img src={pageNotFoundImg.src} alt="Page Not Found Image" />
+      </div>
+    </Content>
+  </Container>
+</HTML>
