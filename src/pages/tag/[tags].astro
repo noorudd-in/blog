@@ -1,0 +1,69 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { tags: "web-development" } },
+    { params: { tags: "machine-learning" } },
+    { params: { tags: "data-science" } },
+    { params: { tags: "programming" } },
+    { params: { tags: "artificial-intelligence" } },
+    { params: { tags: "quantum-computing" } },
+    { params: { tags: "big-data" } },
+  ];
+}
+
+const { tags } = Astro.params;
+import HTML from "../../layouts/HTML.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Header from "../../layouts/Header.astro";
+import Footer from "../../layouts/Footer.astro";
+import { blogData } from "../../constants/blogData";
+import "../../base.css";
+
+const data = blogData.filter((blog) => {
+  if (blog.tags.includes(tags)) {
+    return blog;
+  }
+});
+const getTagName = () => {
+  let words = tags.split("-");
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+  }
+  return words.join(" ");
+};
+const tagName = getTagName();
+console.log(tagName);
+---
+
+<HTML title={`${tagName} Blogs`} description="All my written blogs!">
+  <Header />
+  <Container>
+    <SubHeading title={tagName} />
+
+    <div class="divide-neutral-500 divide-y" id="content">
+      {
+        data[0] == undefined && (
+          <div class="font-bold text-neutral-300 text-center my-5 text-3xl">
+            No post to show.
+          </div>
+        )
+      }
+      {
+        data.map((blog) => {
+          return (
+            <a
+              class="hover:text-white cursor-pointer flex flex-col group items-start justify-between py-2 sm:flex-row sm:items-center sm:py-4 sm:text-2xl text-md text-neutral-500 transition-colors"
+              href={`/${blog.category}/${blog.slug}`}
+              id={blog.category}
+            >
+              <span class="text-white">{blog.title}</span>
+              <span class="sm:text-lg mt-1 sm:mt-0 text-sm">{blog.date}</span>
+            </a>
+          );
+        })
+      }
+    </div>
+  </Container>
+  <Footer />
+</HTML>

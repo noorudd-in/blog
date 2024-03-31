@@ -7,9 +7,12 @@ const { tags } = Astro.props;
     <div class="flex gap-2 sm:text-base mb-5 sm:mb-12">
       {tags.map((tag) => {
         return (
-          <span class="py-1 bg-neutral-700 px-3.5 rounded-full text-base text-neutral-300">
+          <a
+            href={`/tag/${tag.toLowerCase().replace(" ", "-")}`}
+            class="py-1 bg-neutral-700 px-3.5 rounded-full text-base text-neutral-300"
+          >
             {tag}
-          </span>
+          </a>
         );
       })}
     </div>

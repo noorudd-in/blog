@@ -1,0 +1,29 @@
+---
+import HTML from "../layouts/HTML.astro";
+import Container from "../layouts/Container.astro";
+import SubHeading from "../layouts/SubHeading.astro";
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
+import Category from "../layouts/Category.astro";
+import "../base.css";
+---
+
+<HTML
+  title="Philosophy Blogs"
+  description="All my written blogs related to life, growth and philosophy!"
+>
+  <Header />
+  <Container>
+    <SubHeading
+      title="Nooruddin Shaikh"
+      subtitle="Exploring life, moment by moment."
+    />
+    <Category current="life" />
+    <div class="divide-neutral-500 divide-y">
+      <div class="font-bold text-neutral-300 text-center my-5 text-3xl">
+        No post to show.
+      </div>
+    </div>
+  </Container>
+  <Footer />
+</HTML>

@@ -1,0 +1,38 @@
+---
+import HTML from "../layouts/HTML.astro";
+import Container from "../layouts/Container.astro";
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
+import Content from "../layouts/Content.astro";
+---
+
+<HTML
+  title="Subscribe Blogs"
+  description="Subscribe to my blogpost newsletter."
+>
+  <Header />
+  <Container>
+    <Content>
+      <div class="text-center">
+        <p>
+          If you've landed here, there's an 83% chance you'll never see me
+          again. Subscribe now to receive updates whenever I post a new blog
+          article directly to your inbox. Rest assured, I respect your
+          privacy—your email will never be shared, not even with my family!
+        </p>
+      </div>
+      <div class="flex justify-center">
+        <iframe
+          src="https://blogsbynoor.substack.com/embed"
+          frameborder="0"
+          scrolling="no"></iframe>
+      </div>
+      <div>
+        <p>
+          After subscribing, please confirm your subscription on your email too.
+        </p>
+      </div>
+    </Content>
+  </Container>
+  <Footer />
+</HTML>
