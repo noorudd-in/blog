@@ -7,6 +7,8 @@ import Content from "../../layouts/Content.astro";
 import Footer from "../../layouts/Footer.astro";
 import Tags from "../../layouts/Tags.astro";
 import LINK from "../../layouts/LINK.astro";
+import Reminder from "../../layouts/Reminder.astro";
+import Navigation from "../../layouts/Navigation.astro";
 import { Code } from "astro-expressive-code/components";
 import {
   C1,
@@ -20,7 +22,7 @@ import {
   C9,
   C10,
   C11,
-} from "../../constants/codeBlocks";
+} from "../../snippets/hyper-parameter-tuning-with-custom-gridsearchcv";
 
 const blogTitle = "Hyper-parameter Tuning with Custom GridSearchCV";
 const blogDescription =
@@ -28,6 +30,15 @@ const blogDescription =
 const blogDate = "10 July, 2021";
 const readingTime = 8;
 const tags = ["Machine Learning", "Data Science"];
+const navigations = [
+  { label: "Cross-Validation", id: "cross-validation" },
+  { label: "GridSearchCV", id: "gridSearchcv" },
+  {
+    label: "Implementing Custom GridSearchCV",
+    id: "implementing-custom-gridSearchcv",
+  },
+  { label: "Testing Our Function", id: "testing-our-function" },
+];
 ---
 
 <HTML title={blogTitle} description={blogDescription}>
@@ -40,6 +51,7 @@ const tags = ["Machine Learning", "Data Science"];
     />
     <Tags tags={tags} />
     <Content>
+      <Navigation data={navigations} />
       <p>
         Typically in Machine Learning, we split our datasets into two parts,
         i.e. training(70% usually) and testing(30% usually) datasets. If we are
@@ -59,7 +71,7 @@ const tags = ["Machine Learning", "Data Science"];
         with various methods in which one way is to use Cross-Validation while
         splitting data.
       </p>
-      <h2>Cross-Validation</h2>
+      <h2 id="cross-validation">Cross-Validation</h2>
       <p>
         To understand this, we will take an example of the KNN Algorithm. What
         we usually do is split our data into three parts instead of two viz
@@ -86,7 +98,7 @@ const tags = ["Machine Learning", "Data Science"];
         this, researchers have come up with many modifications and we are going
         to learn one in this article.
       </p>
-      <h2>GridSearchCV</h2>
+      <h2 id="gridSearchcv">GridSearchCV</h2>
       <p>
         Split the data into two parts, 80% of the data will be used as training
         data while 20% will be used as testing data. The training dataset is now
@@ -125,7 +137,9 @@ const tags = ["Machine Learning", "Data Science"];
         GridSearchCV from scratch using Python without using Sklearn. You can
         also use the Sklearn library which is more efficient in its own way.
       </p>
-      <h2>Implementing Custom GridSearchCV</h2>
+      <h2 id="implementing-custom-gridSearchcv">
+        Implementing Custom GridSearchCV
+      </h2>
       <Code code={C1} lang="py" />
       <p class="text-am">
         We will be using <span class="highlight">make_classification</span> from
@@ -211,7 +225,7 @@ const tags = ["Machine Learning", "Data Science"];
       </p>
       <p>Here is the full code of the function:</p>
       <Code code={C10} lang="py" title="grid_search_cv.py" />
-      <h2>Testing Our Function</h2>
+      <h2 id="testing-our-function">Testing Our Function</h2>
       <Code code={C11} lang="py" />
       <p>
         Here we are creating a dataset of 10,000 samples with 2 informative
@@ -244,7 +258,7 @@ const tags = ["Machine Learning", "Data Science"];
         alt="Comparison Graph"
         class="bg-white"
       />
-      <p>
+      <p id="conclusion">
         For detailed and step by step code, refer to my <LINK
           text="GitHub"
           url="https://github.com/noor12401/Machine-Learning/tree/main/Implementing%20Custom%20GridSearchCV"
@@ -254,6 +268,7 @@ const tags = ["Machine Learning", "Data Science"];
           url="https://colab.research.google.com/drive/1LVt0p07240f21pJPv2stvTrF6JwfNOZy?usp=sharing"
         />
       </p>
+      <Reminder />
     </Content>
   </Container>
   <Footer />

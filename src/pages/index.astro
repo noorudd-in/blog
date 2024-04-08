@@ -24,16 +24,18 @@ import "../base.css";
     <div class="divide-neutral-500 divide-y">
       {
         blogData.map((blog) => {
-          return (
-            <a
-              class="hover:text-white cursor-pointer flex flex-col group items-start justify-between py-2 sm:flex-row sm:items-center sm:py-4 sm:text-2xl text-md text-neutral-500 transition-colors"
-              href={`/${blog.category}/${blog.slug}`}
-              id={blog.category}
-            >
-              <span class="text-white">{blog.title}</span>
-              <span class="sm:text-lg mt-1 sm:mt-0 text-sm">{blog.date}</span>
-            </a>
-          );
+          if (blog.category == "tech") {
+            return (
+              <a
+                class="hover:text-white cursor-pointer flex flex-col group items-start justify-between py-2 sm:flex-row sm:items-center sm:py-4 sm:text-2xl text-md text-neutral-500 transition-colors"
+                href={`/${blog.category}/${blog.slug}`}
+                id={blog.category}
+              >
+                <span class="text-white">{blog.title}</span>
+                <span class="sm:text-lg mt-1 sm:mt-0 text-sm">{blog.date}</span>
+              </a>
+            );
+          }
         })
       }
     </div>

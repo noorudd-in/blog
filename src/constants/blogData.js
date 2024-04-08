@@ -1,5 +1,19 @@
 export const blogData = [
   {
+    title: "From HTML to JSX - A Deep Dive",
+    date: "Jan 15, 2024",
+    slug: "from-html-to-jsx-a-deep-dive",
+    category: "tech",
+    tags: ["web-development", "reactjs"],
+  },
+  {
+    title: "Securing Future with Emergency Fund",
+    date: "Jan 12, 2024",
+    slug: "securing-future-with-emergency-fund",
+    category: "finance",
+    tags: [""],
+  },
+  {
     title: "How browser renders websites",
     date: "Oct 13, 2023",
     slug: "how-browser-renders-websites",

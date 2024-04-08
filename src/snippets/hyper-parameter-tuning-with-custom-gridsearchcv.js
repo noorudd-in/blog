@@ -1,27 +1,3 @@
-export const C13 = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        let content = document.getElementById("name").innerText;
-        alert(content); // Not accessible.
-    </script>
-    <title>Example</title>
-</head>
-<body>
-    <h1 id="name">Hi, I am Noor!</h1>
-    <div>I am a div tag!</div>
-</body>
-</html>
-`;
-
-export const C12 = `
-<div style="display:none">Hidden element</div>
-`;
-
 export const C11 = `
 x, y = make_classification(n_samples=10000, n_features=2, n_informative=2, n_redundant=0, n_clusters_per_class=1, random_state=53)
 #Spliting data into training and testing datasets

@@ -6,12 +6,18 @@ import SubHeading from "../../layouts/SubHeading.astro";
 import Content from "../../layouts/Content.astro";
 import Footer from "../../layouts/Footer.astro";
 import Tags from "../../layouts/Tags.astro";
+import Reminder from "../../layouts/Reminder.astro";
+import Navigation from "../../layouts/Navigation.astro";
 
 const blogTitle = "Is Data Science a Hype?";
 const blogDescription = "AI will take you job!";
 const blogDate = "31 January, 2021";
 const readingTime = 3;
 const tags = ["Artificial Intelligence", "Data Science", "Machine Learning"];
+const navigations = [
+  { label: "Automated Softwares", id: "automated-softwares" },
+  { label: "Every Data on Purpose", id: "every-data-on-purpose" },
+];
 ---
 
 <HTML title={blogTitle} description={blogDescription}>
@@ -24,6 +30,7 @@ const tags = ["Artificial Intelligence", "Data Science", "Machine Learning"];
     />
     <Tags tags={tags} />
     <Content>
+      <Navigation data={navigations} />
       <p>
         You have seen a rising trend in Machine Learning or Artifical
         Intelligence and you may have came across people quoting <span
@@ -38,7 +45,7 @@ const tags = ["Artificial Intelligence", "Data Science", "Machine Learning"];
         knowledge? To understand this let us see what do companies do with the
         data and how they handle it.
       </p>
-      <h2>Automated Softwares</h2>
+      <h2 id="automated-softwares">Automated Softwares</h2>
       <p>
         Companies have already best practiced the data, about storing and
         retrieving data, many developers have taken such tasks. In
@@ -47,7 +54,7 @@ const tags = ["Artificial Intelligence", "Data Science", "Machine Learning"];
         machine produces the best visualization too. Companies are already using
         tools like MicroStrategy, Looker, Domo, etc.
       </p>
-      <h2>Every Data on Purpose</h2>
+      <h2 id="every-data-on-purpose">Every Data on Purpose</h2>
       <p>
         Say a client is asking you to build an application that uses the data
         from their database and does some tasks (say it performs recommendations
@@ -117,13 +124,14 @@ const tags = ["Artificial Intelligence", "Data Science", "Machine Learning"];
         then only companies are interested! It’s sure AI is hyped but
         understanding the applications and implementations is a crucial thing.
       </p>
-      <h2>Conclusion</h2>
+      <h2 id="conclusion">Conclusion</h2>
       <p>
         There is a long way to go my friend, just do and stick to whatever is
         your interest, but also think about the future, do some analysis. Don’t
         push the wall too hard, see whether we are pushing the wall or is there
         really a door!
       </p>
+      <Reminder />
     </Content>
   </Container>
   <Footer />

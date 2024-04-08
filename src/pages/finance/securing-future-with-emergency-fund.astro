@@ -1,0 +1,401 @@
+---
+import HTML from "../../layouts/HTML.astro";
+import Header from "../../layouts/Header.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Content from "../../layouts/Content.astro";
+import Footer from "../../layouts/Footer.astro";
+import Disclaimer from "../../layouts/Disclaimer.astro";
+import Reminder from "../../layouts/Reminder.astro";
+
+const blogTitle = "Securing Future with Emergency Fund";
+const blogDescription = "";
+const blogDate = "12 January, 2024";
+const readingTime = 2;
+---
+
+<HTML title={blogTitle} description={blogDescription}>
+  <Header />
+  <Container>
+    <SubHeading
+      title={blogTitle}
+      subtitle={blogDate}
+      readingTime={readingTime}
+    />
+    <Disclaimer />
+    <Content>
+      <p>
+        An emergency fund is a cash or fund reserve which can be accessed
+        instantly whenever there is an emergency. Keeping an emergency fund will
+        make your life more secure and stress-free. It is advised that you
+        should have at least 12 months of emergency funds (For some keeping
+        funds of 3 to 6 months are also enough).
+      </p>
+      <p>An emergency fund is for:</p>
+      <ul>
+        <li>
+          If you get laid off/fired/resigned from your current job, and you need
+          time to find a new job.
+        </li>
+        <li>
+          Whenever there is a financial crisis or recession or high inflation in
+          your country.
+        </li>
+        <li>
+          Unexpected health issues in your family which can cause large hospital
+          bills.
+        </li>
+        <li>Emergency car or home repair.</li>
+        <li>Emergency need of money in the house.</li>
+      </ul>
+      <p>An emergency fund is not for:</p>
+      <ul>
+        <li>Buying expensive clothes, shoes, or wishlist items.</li>
+        <li>Travels, parties, and vacations.</li>
+        <li>Spending money on liabilities which is not an emergency need.</li>
+      </ul>
+      <h2>How to calculate EF?</h2>
+      <p>
+        The simple rule to calculate any emergency funds is to multiply your
+        monthly income by 12 (for 12 months of funds). But this is not the right
+        way as one can have a higher income but less expenses or vice versa.
+        Finding the right amount is also important as if you save less you might
+        be in trouble, if you save more than required then you could have
+        invested that extra money somewhere else and can get gains.
+      </p>
+      <p>
+        Everyone has a different family, maybe you are the sole bread earner in
+        your family or your family has more than one earning person. So instead
+        of relying on income to calculate emergency funds, we should take
+        expenses into account.
+      </p>
+      <p>
+        Let's see a step-by-step process to calculate the emergency funds
+        required. Although no calculator will give the precise amount, with this
+        process you will get the amount closer to accurate.
+      </p>
+      <ul>
+        <li>
+          <span class="font-semibold">Component A (House):</span> Any amount
+          that you spend on fixed items such as house rent, house maintenance,
+          house tax, and house mortgage.
+        </li>
+        <li>
+          <span class="font-semibold">Component B (Utility):</span> Any amount
+          that you spend on utilities such as Electricity, Gas, Water, Garbage,
+          Internet, Wifi, Mobile Recharge, etc.
+        </li>
+        <li>
+          <span class="font-semibold">Component C (Food):</span> Any amount that
+          you spend on groceries, food items, restaurants, take-away or dining,
+          diets, child food care, etc.
+        </li>
+        <li>
+          <span class="font-semibold">Component D (Transport):</span> Any amount
+          you spend on regular transportation such as public transportation fees
+          or your car, bike, or vehicle fuel amount.
+        </li>
+        <li>
+          <span class="font-semibold">Component E (Insurance):</span> Any amount
+          that you pay for insurance, it may be life, health, or other
+          insurance.
+        </li>
+        <li>
+          <span class="font-semibold">Component F (Other):</span> Any other
+          expenses that are needed or useful to you such as ongoing medicines,
+          entertainment subscriptions, educational books or course expenses,
+          etc. Don't include expenses that can be compromised like expensive
+          travel, or buying shoes or sneakers, and so on.
+        </li>
+      </ul>
+      <p>
+        Component A to Component F will give you the basic monthly expenses of
+        your family. You can multiply this by 12 (or 6 or 3) to get your
+        emergency fund amount. But this is still not valid for everyone. To get
+        a more accurate amount you also need to take other things into the
+        account. Before proceeding, calculate the <span class="font-semibold"
+          >Basic Amount: The sum of all amounts from Component A to Component F.</span
+        > Now you need to also calculate:
+      </p>
+      <ul>
+        <li>
+          <span class="font-semibold">Parents Amount:</span> If you live with
+          your parents, then you also need to take care of it. Multiply the
+          Basic Amount by 0.8 (if you have both your parents) or 0.4 (if you
+          have a single parent) and mark it as Parents Amount.
+        </li>
+        <li>
+          <span class="font-semibold">Wife Amount:</span> If you are married,
+          then you need to multiply the Basic Amount by 0.8 and mark that amount
+          as Wife Amount.
+        </li>
+        <li>
+          <span class="font-semibold">Kids Amount:</span> If you or your family
+          have kids then for every kid you need to take the equivalent Basic
+          Amount. If you have 2 kids, then the amount will be 2 * Basic Amount
+          and so on.
+        </li>
+      </ul>
+      <p>
+        Once you have calculated all the amounts, you can now get an appropriate
+        emergency fund for your family! Just use the below formula to get it.
+      </p>
+      <p>
+        <span class="font-semibold"
+          >Final Amount: (Basic * 12) + Parent + Wife + Kids Amount.</span
+        > You can change the number 12 with 6 or 3 as per your required months.
+      </p>
+      <p>
+        You can also use the following calculator or refer to the below examples
+        to better under the calculation.
+      </p>
+      <div id="calculator">
+        <hr />
+        <h3 class="text-center">Emergency Fund Calculator</h3>
+        <div>
+          <label>Fixed amount:</label>
+          <input
+            type="number"
+            id="compA"
+            value=""
+            class="m-1 px-1 border text-md rounded-md text-white bg-gray-700 border-gray-600"
+            placeholder="12000"
+          />
+          <div class="italic text-sm">
+            House rent, tax, maintenance, mortgage, etc
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label>Utilities:</label>
+          <input
+            type="number"
+            id="compB"
+            class="m-1 px-1 border text-md rounded-md text-white bg-gray-700 border-gray-600"
+            placeholder="2500"
+          />
+          <div class="italic text-sm">
+            Electricity, Gas, Water, Garbage, Internet, Wifi, Mobile Recharge,
+            etc.
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label>Food & Groceries:</label>
+          <input
+            type="number"
+            id="compC"
+            class="m-1 px-1 border text-md rounded-md text-white bg-gray-700 border-gray-600"
+            placeholder="8000"
+          />
+          <div class="italic text-sm">Groceries, food items, restaurants</div>
+        </div>
+
+        <div class="mt-3">
+          <label>Transport:</label>
+          <input
+            type="number"
+            id="compD"
+            class="m-1 px-1 border text-md rounded-md text-white bg-gray-700 border-gray-600"
+            placeholder="2000"
+          />
+          <div class="italic text-sm">
+            Public transportation or vehicle fuel.
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label>Insurance:</label>
+          <input
+            type="number"
+            id="compE"
+            class="m-1 px-1 border text-md rounded-md text-white bg-gray-700 border-gray-600"
+            placeholder="3000"
+          />
+          <div class="italic text-sm">Amount that you pay for insurance</div>
+        </div>
+
+        <div class="mt-3">
+          <label>Other Expenses:</label>
+          <input
+            type="number"
+            id="compF"
+            class="m-1 px-1 border text-md rounded-md text-white bg-gray-700 border-gray-600"
+            placeholder="5000"
+          />
+          <div class="italic text-sm">
+            Medicals, subscriptions, courses, books, ect.
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label>Living with parents?</label>
+          <select
+            id="parents"
+            class="my-1 p-1 border text-md rounded-md bg-gray-700 border-gray-600 text-white"
+          >
+            <option value="1">Yes with single parent</option>
+            <option value="2">Yes with both parents</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
+        <div class="mt-3">
+          <label>Married?</label>
+          <select
+            id="wife"
+            class="my-1 p-1 border text-md rounded-md bg-gray-700 border-gray-600 text-white"
+          >
+            <option value="0">Single</option>
+            <option value="1">Married</option>
+          </select>
+        </div>
+
+        <div class="mt-3">
+          <label>Total kids in your family?</label>
+          <input
+            type="number"
+            id="kids"
+            class="m-1 px-1 border text-md rounded-md text-white bg-gray-700 border-gray-600"
+            placeholder="2"
+          />
+        </div>
+
+        <div class="mt-3">
+          <label>Calculate EF for</label>
+          <select
+            id="months"
+            class="my-1 p-1 border text-md rounded-md bg-gray-700 border-gray-600 text-white"
+          >
+            <option value="12">12 months</option>
+            <option value="8">8 months</option>
+            <option value="6">6 months</option>
+            <option value="3">3 months</option>
+          </select>
+        </div>
+
+        <button
+          id="calculate"
+          class="text-center my-2 p-1 bg-teal-300 text-black text-lg rounded items-center"
+        >
+          Calculate
+        </button>
+        <div class="mt-3">
+          <p>
+            You must save <span id="finalAmount">0</span> as your emergency fund
+            amount.
+          </p>
+        </div>
+        <hr />
+      </div>
+      <p class="font-semibold">
+        Example 1: You are a single person living with your parents (both mom
+        and dad).
+      </p>
+      <p>In this case, let's say your</p>
+      <ul>
+        <li>
+          Basic Amount (Component A to Component F) = INR 20,000 (or 250$).
+        </li>
+        <li>
+          Parents Amount: INR 16,000 (or 200$). Since you live with both
+          parents, so multiply the Basic Amount by 0.8 factor.
+        </li>
+        <li>Wife Amount: INR 0 (or 0$). Since you are single.</li>
+        <li>
+          Kids Amount: INR 0 (or 0$). Since you are not married, so there are no
+          kids in your family.
+        </li>
+      </ul>
+      <p>
+        <span class="font-semibold">Final Amount in INR:</span> (20,000 * 12) +
+        16,000 + 0 + 0 = <span class="font-semibold">INR 2,56,000</span>
+      </p>
+      <p>
+        <span class="font-semibold">Final Amount in USD:</span> (250 * 12) + 200
+        + 0 + 0 = <span class="font-semibold">3,200$</span>
+      </p>
+      <p class="font-semibold">
+        Example 2: You are a married person living with one parent. Also, assume
+        your family has 2 kids.
+      </p>
+      <p>In this case, let's say your</p>
+      <ul>
+        <li>
+          Basic Amount (Component A to Component F) = INR 20,000 (or 250$).
+        </li>
+        <li>
+          Parents Amount: INR 8,000 (or 100$). Since you live with only one
+          parent, so multiply the Basic Amount by 0.4 factor.
+        </li>
+        <li>Wife Amount: INR 16,000 (or 200$). Since you are married.</li>
+        <li>
+          Kids Amount: INR 40,000 (or 500$). Since your family consists of two
+          kids, taking 2 * Basic as amount.
+        </li>
+      </ul>
+      <p>
+        <span class="font-semibold">Final Amount in INR:</span> (20,000 * 12) +
+        8,000 + 16,000 + 40,000 = <span class="font-semibold">INR 3,04,000</span
+        >
+      </p>
+      <p>
+        <span class="font-semibold">Final Amount in USD:</span> (250 * 12) + 100
+        + 200 + 500 = <span class="font-semibold">3,800$</span>
+      </p>
+      <Reminder />
+    </Content>
+  </Container>
+  <Footer />
+</HTML>
+
+<script is:inline>
+let calculate = document.getElementById("calculate");
+const handleCalculate = () => {
+  let compA = document.getElementById("compA").value;
+  let compB = document.getElementById("compB").value;
+  let compC = document.getElementById("compC").value;
+  let compD = document.getElementById("compD").value;
+  let compE = document.getElementById("compE").value;
+  let compF = document.getElementById("compF").value;
+  let parents = document.getElementById("parents").value;
+  let wife = document.getElementById("wife").value;
+  let kids = document.getElementById("kids").value;
+  let months = document.getElementById("months").value;
+  let finalAmount = document.getElementById("finalAmount");
+
+  if (
+    compA == "" ||
+    compB == "" ||
+    compC == "" ||
+    compD == "" ||
+    compE == "" ||
+    compF == "" ||
+    kids == ""
+  ) {
+    alert("All fields are required");
+    return;
+  }
+  let basic = +compA + +compB + +compC + +compD + +compE + +compF;
+
+  let parentsAmount = +parents * 0.4 * basic;
+  let wifeAmount = +wife * 0.8 * basic;
+  let kidsAmount = +kids * basic;
+  let final = parseInt(
+    basic * +months + parentsAmount + wifeAmount + kidsAmount
+  );
+  let len = final.toString().length;
+  if (len > 3) {
+    final = final.toString();
+    let lastThree = final.slice(final.length - 3, final.length);
+    let otherNumbers = final.slice(0, final.length - 3);
+    let res =
+      otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + lastThree;
+    finalAmount.innerText = res;
+  } else {
+    finalAmount.innerText = final;
+  }
+};
+
+calculate.addEventListener("click", handleCalculate);
+</script>

@@ -6,6 +6,8 @@ import SubHeading from "../../layouts/SubHeading.astro";
 import Content from "../../layouts/Content.astro";
 import Footer from "../../layouts/Footer.astro";
 import Tags from "../../layouts/Tags.astro";
+import Reminder from "../../layouts/Reminder.astro";
+import Navigation from "../../layouts/Navigation.astro";
 import LINK from "../../layouts/LINK.astro";
 
 const blogTitle = "";
@@ -13,6 +15,7 @@ const blogDescription = "";
 const blogDate = "";
 const readingTime = 2;
 const tags = [];
+const navigations = [{ label: "", id: "" },];
 ---
 
 <HTML title={blogTitle} description={blogDescription}>

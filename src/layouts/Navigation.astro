@@ -1,0 +1,29 @@
+---
+const { data } = Astro.props;
+---
+
+<div class="p-2 bg-gray-700 rounded">
+  <div class="text-lg">On This Page</div>
+  <a class="underline underline-offset-4 cursor-pointer" href="#"
+    >Introduction</a
+  >
+  <span>-></span>
+  {
+    data.map((item) => {
+      return (
+        <>
+          <a
+            class="underline underline-offset-4 cursor-pointer"
+            href={`#${item.id}`}
+          >
+            {item.label}
+          </a>
+          <span>-></span>
+        </>
+      );
+    })
+  }
+  <a class="underline underline-offset-4 cursor-pointer" href="#conclusion"
+    >Conclusion</a
+  >
+</div>

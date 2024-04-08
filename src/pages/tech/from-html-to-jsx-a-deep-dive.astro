@@ -1,0 +1,401 @@
+---
+import HTML from "../../layouts/HTML.astro";
+import Header from "../../layouts/Header.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Content from "../../layouts/Content.astro";
+import Footer from "../../layouts/Footer.astro";
+import Tags from "../../layouts/Tags.astro";
+import QUOTE from "../../layouts/QUOTE.astro";
+import Reminder from "../../layouts/Reminder.astro";
+import Navigation from "../../layouts/Navigation.astro";
+import { Code } from "astro-expressive-code/components";
+import {
+  C1,
+  C2,
+  C3,
+  C4,
+  C5,
+  C6,
+  C7,
+  C8,
+  C9,
+  C10,
+  C11,
+  C12,
+  C13,
+  C14,
+} from "../../snippets/from-html-to-jsx-a-deep-dive";
+
+const blogTitle = "From HTML to JSX - A Deep Dive";
+const blogDescription =
+  "A Comprehensive Guide of what is JSX and how to use it in ReactJS";
+const blogDate = "15 January, 2024";
+const readingTime = 2;
+const tags = ["Web Development", "ReactJS"];
+const navigations = [
+  { label: "React without JSX", id: "react-without-jsx" },
+  { label: "Pros and Cons", id: "pros-and-cons" },
+  { label: "Internal Workings", id: "internal-workings" },
+  {
+    label: "Extending JavaScript Syntax with JSX",
+    id: "extending-js-syntax-with-jsx",
+  },
+  {
+    label: "The JSX Logic",
+    id: "the-jsx-logic",
+  },
+  { label: "Where does JSX not work?", id: "where-jsx-not-work" },
+];
+---
+
+<HTML title={blogTitle} description={blogDescription}>
+  <Header />
+  <Container>
+    <SubHeading
+      title={blogTitle}
+      subtitle={blogDate}
+      readingTime={readingTime}
+    />
+    <Tags tags={tags} />
+    <Content>
+      <Navigation data={navigations} />
+      <p>
+        JSX is a syntax extension for JavaScript that allows us to write
+        HTML-like code within our JavaScript code. In this post, we will not
+        only see what is it but will also deep dive into how it works. To
+        understand JSX, let's first ask some questions.
+      </p>
+      <p>
+        We know JS is JavaScript, so what is JSX? Is it JavaScript version 10?
+        like JS version X? Or JavaScript Xtra? Well no, the X in JSX stands for
+        <span class="italic font-semibold">JavaScript Syntax eXtension</span>.
+        It is also sometimes called <span class="italic font-semibold"
+          >JavaScript XML</span
+        >.
+      </p>
+      <p>
+        If you have been coding for a while, you would have come across the term
+        AJAX (Asynchronous JavaScript and XML). AJAX was responsible for
+        creating highly interactive web pages that are updated asynchronously
+        instead of a single queue which rather consumes more time. The
+        XMLHttpRequest object of AJAX was able to make async HTTP requests and
+        receive responses from the server without reloading the whole page. The
+        responses were initially in XML format but as the modern implementation
+        evolved, the responses tended to be in JSON instead. This is why <span
+          class="font-semibold">fetch</span
+        >
+         has overtaken <span class="font-semibold">XMLHttpRequest</span>.
+      </p>
+      <p>
+        JSX which you may have heard of while learning React, is a syntax
+        extension for JavaScript that allows developers to write HTML-like code
+        within their JavaScript code. It was originally developed by Meta for
+        React but it has been adopted by a lot of frameworks and libraries as
+        well. JSX is not a separate language rather it's just an extension that
+        is transformed into native JavaScript later. But what does it look like?
+        Is it similar to JavaScript or HTML? Why do we even need it?
+      </p>
+      <p>
+        JSX will help us to write the JavaScript within your HTML. To do this,
+        you will need the curly braces {"{ }"} to embed any JavaScript code you
+        need.
+      </p>
+      <Code code={C1} lang="html" />
+      <p>
+        This is typical HTML, you are aware of. But with JSX, you can use curly
+        braces to introduce JS.
+      </p>
+      <Code code={C2} lang="html" />
+      <p>
+        Moreover, all the HTML attributes are written as camelCase. So, <code
+          >onclick</code
+        > will become <code>onClick</code>, <code>tabindex</code> becomes
+        <code>tabIndex</code>, and so on. Some attributes like <code>for</code>
+         becomes <code>htmlFor</code>, <code>class</code>
+         becomes <code>className</code>.
+      </p>
+      <p>Normal HTML</p>
+      <Code code={C3} lang="html" />
+      <p>The same in JSX will be</p>
+      <Code code={C4} lang="html" />
+      <p>
+        One thing to note is, that all the HTML elements must be lowercase. JSX
+        will treat <code>{"<div>"}</code> as an HTML element but <code
+          >{"<Div>"}</code
+        > or <code>{"<DIV>"}</code> will be treated as a React Component. That's
+        why all React components start with a Capital Letter so JSX & React can
+        differentiate between HTML Elements and React Components.
+      </p>
+      <h2 id="react-without-jsx">React without JSX?</h2>
+      <p>
+        You will see almost all the react components are written in JSX. So you
+        might think, that JSX is mandatory to write React, and without JSX React
+        will not be able to parse the code. This is wrong. You can write React
+        without JSX too but the problem is it will be hard to read and maintain.
+        Let's say you want to render li unordered list items.
+      </p>
+      <p>Here is what you can do in JSX:</p>
+      <Code code={C5} lang="js" />
+      <p>But the same without JSX would be:</p>
+      <Code code={C6} lang="js" />
+      <p>
+        You can see, that writing code with JSX is much simpler and easy to read
+        and maintain than writing in vanilla JS. Writing code in JSX will in the
+        end converted into vanilla JS only.
+      </p>
+      <h2 id="pros-and-cons">Pros and Cons</h2>
+      <p>
+        Using JSX can have several pros and cons. Understanding them will give a
+        ore clarity on JSX. Some of the notable benefits are:
+      </p>
+      <ul>
+        <li>
+          Easy to read, write and maintain: There is no doubt that writing JSX
+          is much easier for developers who are familiar with HTML.
+        </li>
+        <li>
+          Secured: JSX codes are complied into safer JavaScript code which is
+          done through sanitization process.
+        </li>
+        <li>
+          Strong community: JSX is widely accepted in the React communitynd it
+          now being adopted my many libraries and frameworks.
+        </li>
+        <li>
+          Modular: JSX encourages a component-based architecture, which can help
+          make code more modular and easier to maintain.
+        </li>
+      </ul>
+      <p>There are some drawbacks too which needs attention:</p>
+      <ul>
+        <li>
+          Learning Curve: Although JSX is not a new language, some might get
+          overwhelmed by seeing JavaScript inside HTML.
+        </li>
+        <li>
+          Tooling: Native browsers can understand HTML and JS but it doesn't
+          understand JSX, thus it requires a middle tool that converts JSX to
+          native JS. This adds an extra step to the development toolchain.
+        </li>
+        <li>
+          Mixing concerns: Some developers argue that HTML and JS should be
+          different and mixing them will make it harder to separate presentation
+          from logic.
+        </li>
+        <li>
+          Partial compatibility: JSX supports inline expressions, but not inline
+          blocks. That is, inside a tree of JSX elements, we can have inline
+          expressions, but not if or switch blocks. We will see this in more
+          detail.
+        </li>
+      </ul>
+      <h2 id="internal-workings">Internal Workings</h2>
+      <p>
+        Under the hood all the JSX code are converted into vanilla JavaScript
+        only before it is rendered to browsers. But you may ask, how does it
+        work? Let's deep dive!
+      </p>
+      <p>See the following code snippet</p>
+      <Code code={C7} lang="js" />
+      <p>
+        This is a human-readable text. You can understand that two variables are
+        initialized, one with const and the other with let. Then we are
+        consoling (or printing) their sum. How is this interpreted by a computer
+        and then executed? The codes are usually compiled and converted into
+        machine code using a compiler. A compiler is a piece of software that
+        translates source code written in a high-level programming language into
+        a syntax tree (literally, a tree data structure like a JavaScript
+        object) according to specific rules. The process of compiling code
+        involves several steps, including lexical analysis, parsing, semantic
+        analysis, optimization, and code generation. If we talk about compilers
+        (at least for JavaScript), there are three steps that come into play.
+      </p>
+      <h3>Tokenization</h3>
+      <p>
+        In this step, the whole code is broken down into smaller meaningful
+        tokens. When a token has a state about its parent or children, it is
+        known as a lexer. Lexers have rules that detect pre-defined key tokens
+        such as variable names, function names, object keys and values, and
+        more. The lexer then maps these keywords to some type of enumerable
+        value, depending on its implementation. For example, const becomes 0,
+        let becomes 1, function becomes 2, etc.
+      </p>
+      <h3>Parsing</h3>
+      <p>
+        The process of taking the tokens and converting them into the tree-like
+        data structure that represents that whole code structure is known as
+        parsing. The above code can be represented in the tree structure like
+        this:
+      </p>
+      <Code code={C8} lang="json" />
+      <p>With a parser, the string is converted into a JSON object.</p>
+      <h3>Code Generation</h3>
+      <p>
+        This is where the compiler generates machine code from the abstract
+        syntax tree (AST). This involves translating the code in the AST into a
+        series of instructions that can be executed directly by the computer’s
+        processor. The process of converting an AST into machine code is complex
+        and involves many different steps. However, modern compilers are highly
+        sophisticated and can produce highly optimized code that runs
+        efficiently on a wide range of hardware architectures.
+      </p>
+      <p>There are several types of compilers that you have heard of:</p>
+      <ul>
+        <li>
+          Native Compilers: This compiler compiles the code that can be executed
+          directly on that platform. These are usually used to create standalone
+          applications or system-level software.
+        </li>
+        <li>
+          Cross Compilers: These compilers produce machine code for a different
+          platform than the one on which the compiler is running.
+          Cross-compilers are often used in embedded systems development or when
+          targeting specialized hardware.
+        </li>
+        <li>
+          Just-in-Time (JIT) Compilers: These compilers translate code into
+          machine code at runtime, rather than ahead of time. JIT compilers are
+          commonly used in virtual machines, such as the Java virtual machine,
+          and can offer significant performance advantages over traditional
+          interpreters.
+        </li>
+        <li>
+          Interpreters: In this, the programs are executed directly without the
+          need for compilers. The code is compiled on the go and will break if
+          an error occurs. Thus if there is an error on line 32, the interpreter
+          will still run lines 1 to 31 and will give an error on line 32,
+          whereas compilers will not execute unless all the errors are fixed.
+          Interpreters are typically slower than compilers but offer greater
+          flexibility and ease of use.
+        </li>
+      </ul>
+      <p>
+        To execute JavaScript code efficiently, many modern environments,
+        including web browsers, utilize JIT compilers. These compilers are part
+        of engines, which first translate code into an intermediate
+        representation, such as bytecode. Then they are dynamically compiled
+        into machine code on the go. This on-the-fly compilation allows the
+        engine to make optimizations based on real-time information, such as
+        variable types and frequently executed code paths. The most popular
+        JavaScript runtime, by far, is the common web browser, such as Google
+        Chrome: it ships the Chromium runtime that interfaces with the engine.
+        Similarly, on the server side, we use the Node.js runtime that still
+        uses the v8 engine.
+      </p>
+      <p>
+        Runtimes give JavaScript engines context, like the window object and the
+        document object that browser runtimes ship with. If you’ve worked with
+        both browsers and Node.js before, you may have noticed that Node.js does
+        not have a global window object. This is because it’s a different
+        runtime and, as such, provides a different context. Cloudflare created a
+        similar runtime called Workers whose sole responsibility is executing
+        JavaScript on globally distributed machines called edge servers.
+      </p>
+      <p>But what all this is related to JSX?</p>
+      <h2 id="extending-js-syntax-with-jsx">
+        Extending JavaScript Syntax with JSX
+      </h2>
+      <p>
+        Now that you have a clear understanding, of how a compiler works, how
+        codes are converted into machine code, and how to write a JSX syntax.
+        You may ask how JSX works? How it is extended? To extend JavaScript
+        syntax, we’d need to either have a different engine that can understand
+        our new syntax, or deal with our new syntax before it reaches the
+        engine.
+      </p>
+      <p>
+        Former is nearly impossible. We can't create a new engine, because it
+        will be expensive and time-consuming that works on all the devices. Even
+        if we ignore the time-consuming factor, it will still be not a good
+        option as who will adopt our new engines? How would we convince browser
+        vendors and other stakeholders to switch to our unpopular engines? This
+        wouldn’t work.
+      </p>
+      <p>
+        The latter is quicker. Before sending JSX to the browser, we need to
+        convert it to native JavaScript. To do this, we need to create our lexer
+        and parser that can understand our extended language: that is, take a
+        text string of code and understand it. Then, instead of generating
+        machine code as is traditional, we can take this syntax tree and instead
+        generate plain old regular vanilla JavaScript that all current engines
+        can understand. This is precisely what <span
+          class="italic font-semibold">Babel</span
+        > in the JavaScript ecosystem does, along with other tools like
+        TypeScript.
+      </p>
+      <img
+        src="https://res.cloudinary.com/dfwyvvvdp/image/upload/v1712179764/blogs/engine_vs_jsx_u8yqec.jpg"
+        alt="JSX New Engine VS JSX Preprocessor like Babel"
+      />
+      <p>
+        You now clearly know that JSX cannot be sent to browsers directly, it
+        first needs to be transformed and converted to a JS file which then gets
+        compiled. That is why the process is known as Transpilation.
+      </p>
+      <QUOTE>Transpilation: Transform (trans) + Compile (pile)</QUOTE>
+      <h2 id="the-jsx-logic">The JSX Logic</h2>
+      <p>
+        It all starts with <code>{"<"}</code> which is not recognised in
+        JavaScript other than compariosn operator. When JavaScript encounters
+        this, it will of course throw an error: <code
+          >{"SyntaxError: Unexpected token '<' "}</code
+        >. But when JSX transpiles this, it will perform a function call.
+        Because of JSX transpilation, the compiler will know how it should
+        handle some contents of a file.
+      </p>
+      <p>
+        Even native JavaScript has this type of prgama. You have encountered
+        “use strict” pragmas that we sometimes see on top of older modules, and
+        the recent “use client” pragma in the context of React Server Components
+        (RSCs). The signature of the function call that is made when JSX
+        encounters <code>{"<"}</code> is something like this:
+      </p>
+      <Code code={C9} lang="js" />
+      <p>
+        The function received, tag (or label), props and the children as
+        arguments. For example the following JSX code:
+      </p>
+      <Code code={C10} lang="js" />
+      <p>will become the following JavaScript code:</p>
+      <Code code={C11} lang="js" />
+      <h2 id="where-jsx-not-work">Where does JSX not work?</h2>
+      <p>
+        One of the most powerful features of JSX is the ability to execute code
+        inside a tree of elements. You can use dynamic content using variables,
+        even iterate over lists, or perform expression evaluation.
+      </p>
+      <Code code={C12} lang="js" />
+      <p>
+        This will print 3 on the screen as the code in the curly brackets is
+        treated as expressions that are evaluated and displayed. Here is another
+        example with a conditional check using a ternary operation:
+      </p>
+      <Code code={C13} lang="js" />
+      <p>
+        This will render <code>Is number even? YES</code> since the comparison
+        is an evaluated expression. However, it's not possible to execute
+        statements inside of a JSX element tree. This will not work:
+      </p>
+      <Code code={C14} lang="js" />
+      <p>
+        It doesn’t work because statements do not return anything and are
+        considered side effects: they set the state without yielding a value.
+        When JSX encounters this, it will compute and evaluate, it will even go
+        to the if statement, but how does it know that we have to print <code
+          >EVEN</code
+        >? Notice that in the example, we just put the string <code>EVEN</code>.
+        How is our renderer supposed to know we intend to print <code>EVEN</code
+        >? This is why expressions are evaluated, but statements are not.
+      </p>
+      <h2 id="conclusion">Conclusion</h2>
+      <p>
+        I hope you have learned at least one new thing with this blog. This blog
+        might be long and overwhelming for some people who are very new to JSX,
+        but it's worth reading a second time if you are still not confident.
+      </p>
+      <Reminder />
+    </Content>
+  </Container>
+  <Footer />
+</HTML>

@@ -8,14 +8,24 @@ import Footer from "../../layouts/Footer.astro";
 import Tags from "../../layouts/Tags.astro";
 import LINK from "../../layouts/LINK.astro";
 import QUOTE from "../../layouts/QUOTE.astro";
+import Reminder from "../../layouts/Reminder.astro";
+import Navigation from "../../layouts/Navigation.astro";
 import { Code } from "astro-expressive-code/components";
-import { C12, C13 } from "../../constants/codeBlocks";
+import { C1, C2 } from "../../snippets/how-browser-renders-websites.js";
 
 const blogTitle = "How browser renders websites?";
 const blogDescription = "All about BOM and DOM painting.";
 const blogDate = "13 October, 2023";
 const readingTime = 6;
 const tags = ["Web Development"];
+const navigations = [
+  { label: "What is a browser", id: "what-is-a-browser" },
+  { label: "DOM", id: "stage-dom" },
+  { label: "Render Tree", id: "stage-render-tree" },
+  { label: "Reflow", id: "stage-reflow" },
+  { label: "Painting", id: "stage-painting" },
+  { label: "JavaScript Is Costly", id: "javaScript-is-costly" },
+];
 ---
 
 <HTML title={blogTitle} description={blogDescription}>
@@ -28,6 +38,7 @@ const tags = ["Web Development"];
     />
     <Tags tags={tags} />
     <Content>
+      <Navigation data={navigations} />
       <p>
         If asked, “How do browsers render websites?” you could have answered:
         Browsers take HTML and use CSS as styles. There are JS scripts for
@@ -40,7 +51,7 @@ const tags = ["Web Development"];
       <QUOTE>
         The most important part of a web is not the webpage but the browser.
       </QUOTE>
-      <h2>What is a browser?</h2>
+      <h2 id="what-is-a-browser">What is a browser?</h2>
       <p>
         Simply, it is just a software that loads some files from a remote server
         (or from your computer/system). The files can be txt, html, json, or
@@ -71,7 +82,7 @@ const tags = ["Web Development"];
         Let’s unleash how websites (typically made using HTML, CSS, JS, React,
         etc) are rendered on the browser.
       </p>
-      <h2>Stage: DOM</h2>
+      <h2 id="stage-dom">Stage: DOM</h2>
       <img
         src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Qb-b1zDPcAMESVQa5HZtsQ.png"
         alt="How the browser reads HTML Files."
@@ -108,7 +119,7 @@ const tags = ["Web Development"];
         Now these DOM trees will be rendered on the browser, and it's done?
         Nope, there is much more to it!
       </p>
-      <h2>Stage: Render Tree</h2>
+      <h2 id="stage-render-tree">Stage: Render Tree</h2>
       <p>
         DOM Structure is built, but what about CSS? And so here comes CSSOM in
         the picture! CSSOM is a CSS Object Model just like DOM for HTML. The
@@ -142,7 +153,7 @@ const tags = ["Web Development"];
         The render tree contains all the nodes that need to be displayed. So,
         for example, if there exists a div element with display:none as style:
       </p>
-      <Code code={C12} lang="html" />
+      <Code code={C2} lang="html" />
       <p>
         Then, this element will exist in the DOM tree, but it won’t exist in the
         final render tree as it is not displayed. You can also see in the above
@@ -153,7 +164,7 @@ const tags = ["Web Development"];
         So the render tree, a combination of the DOM tree and CSSOM tree, is
         displayed on the browser, and that’s all? Nope, there's more to it!
       </p>
-      <h2>Stage: Reflow</h2>
+      <h2 id="stage-reflow">Stage: Reflow</h2>
       <p>
         Once the browser makes a render tree, the next step is to design the
         layout of each element that exists in the render tree node. We have an
@@ -163,7 +174,7 @@ const tags = ["Web Development"];
         made for each device viewport (it can be a mobile screen, a tablet, or a
         desktop).
       </p>
-      <h2>Stage: Painting</h2>
+      <h2 id="stage-painting">Stage: Painting</h2>
       <p>
         We have all the visible elements, content, and styles and even have it’s
         exact sizes and positions. Now, it’s time to paint the element and
@@ -176,7 +187,7 @@ const tags = ["Web Development"];
         src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*tFqvDwCKA10nOpOQi_sCUg.png"
         alt="How a webpage is rendered on the browser."
       />
-      <h2>JavaScript Is Costly</h2>
+      <h2 id="javaScript-is-costly">JavaScript Is Costly</h2>
       <p>
         Website is not just HTML and CSS. JavaScript (which people refer to as
         the brain of a website) is widely used in web development. But
@@ -203,7 +214,7 @@ const tags = ["Web Development"];
         is not created fully and is paused as script tag is encountered. See the
         example below.
       </p>
-      <Code code={C13} lang="html" />
+      <Code code={C1} lang="html" />
       <p>
         Here, the alert will not be created because the element {"<h1>"}
          with the ID name, the script is trying to access is not created yet!
@@ -230,11 +241,13 @@ const tags = ["Web Development"];
         delayed to reduce the latency of our webpage as low as possible to load
         the website much faster.
       </p>
+      <h2 id="conclusion">Conclusion</h2>
       <p>
         If you have came so far and found this to be valuable, I appreciate your
         clap on this article. Do follow me for more Web Development and DSA
         kinds of stuffs.
       </p>
+      <Reminder />
     </Content>
     <Footer />
   </Container>
