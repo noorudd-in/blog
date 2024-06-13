@@ -28,7 +28,10 @@ const navigations = [{ label: "", id: "" },];
     />
     <Tags tags={tags} />
     <Content>
+    <Navigation data={navigations} />
       <p>Hello</p>
+       <h2 id=""></h2>
+       <Reminder />
     </Content>
   </Container>
   <Footer />

@@ -1,0 +1,480 @@
+---
+import HTML from "../../layouts/HTML.astro";
+import Header from "../../layouts/Header.astro";
+import Container from "../../layouts/Container.astro";
+import SubHeading from "../../layouts/SubHeading.astro";
+import Content from "../../layouts/Content.astro";
+import Footer from "../../layouts/Footer.astro";
+import Tags from "../../layouts/Tags.astro";
+import Reminder from "../../layouts/Reminder.astro";
+import Navigation from "../../layouts/Navigation.astro";
+import LINK from "../../layouts/LINK.astro";
+import { Code } from "astro-expressive-code/components";
+import {
+  C1,
+  C2,
+  C3,
+  C4,
+  C5,
+  C6,
+  C7,
+  C8,
+  C9,
+  C10,
+  C11,
+  C12,
+  C13,
+  C14,
+  C15,
+  C16,
+  C17,
+  C18,
+  C19,
+  C20,
+  C21,
+  C22,
+  C23,
+  C24,
+  C25,
+  C26,
+  C27,
+} from "../../snippets/understanding-react-local-state-the-right-way";
+
+const blogTitle = "Understanding React Local State The Right Way!";
+const blogDescription = "A comprehensive guide to Reacts useState hook!";
+const blogDate = "06 May, 2024";
+const readingTime = 13;
+const tags = ["State Management", "ReactJS", "Web Development"];
+const navigations = [
+  { id: "custom-hooks", label: "Custom Hooks" },
+  { id: "convention", label: "Convention" },
+  {
+    id: "updating-usestate-with-direct-value",
+    label: "Updating useState with direct value",
+  },
+  {
+    id: "updating-usestate-with-function",
+    label: "Updating useState with function",
+  },
+  { id: "an-interesting-example", label: "An Interesting Example" },
+  {
+    id: "updating-usestate-with-lazy-initialisation",
+    label: "Updating useState with lazy initialisation",
+  },
+  { id: "understanding-usereducer", label: "Understanding useReducer" },
+  {
+    id: "updating-usereducer-with-lazy-initialisation",
+    label: "Updating useReducer with lazy initialisation",
+  },
+  {
+    id: "implementing-usestate-with-usereducer",
+    label: "Implementing useState with useReducer",
+  },
+  {
+    id: "implementing-usereducer-with-usestate",
+    label: "Implementing useReducer with useState",
+  },
+];
+---
+
+<HTML title={blogTitle} description={blogDescription}>
+  <Header />
+  <Container>
+    <SubHeading
+      title={blogTitle}
+      subtitle={blogDate}
+      readingTime={readingTime}
+    />
+    <Tags tags={tags} />
+    <Content>
+      <Navigation data={navigations} />
+      <p>
+        If you are using ReactJS to build a website then you must have used
+        useState to manage state. States are a great way to manage and render
+        dynamic content in React. States can change over time, and React takes
+        care of components to render with the state.
+      </p>
+      <p>
+        The simplest way to manage states in React is using hooks. The two hooks
+        are <span class="font-semibold">useState</span> and <span
+          class="font-semibold">useReducer</span
+        >! Using these hooks we can manage the state inside any component
+        easily. But these are local states, the state maintained inside one
+        component cannot be used in some other components, and that’s why it is
+        named a local state.
+      </p>
+      <p>
+        On the other hand, we can also manage global state using props drilling
+        or Context API or even using 3rd party state management libraries. But
+        in this article let’s focus on how to manage the local state the right
+        way!
+      </p>
+      <p>Let’s see a basic usage of useState:</p>
+      <Code code={C1} lang="js" />
+      <p>
+        The count is managed locally and whenever the button is clicked the
+        count is updated. This is pretty straightforward. But how about we
+        extract the logic and make use of custom hooks?
+      </p>
+      <h2 id="custom-hooks">Custom Hooks</h2>
+      <p>
+        Let’s create a <span class="font-semibold">useCount</span> custom hook and
+        manage the state in that custom hook. We will use the same example as above:
+      </p>
+      <div class="mb-2">
+        <Code code={C2} lang="js" title="useCount.jsx" />
+      </div>
+      <div class="mt-2">
+        <Code code={C3} lang="js" title="Component.jsx" />
+      </div>
+      <p>
+        We made a few changes and our code is still working. With this, we now
+        have a more clearer name — useCount and now the Component is independent
+        of the implementation of useCount.
+      </p>
+      <h2 id="convention">Convention</h2>
+      <p>We initialize useState as follows:</p>
+      <Code code={C4} lang="js" />
+      <p>
+        Here we have two things: <span class="font-semibold">count</span> and <span
+          class="font-semibold">setCount</span
+        >. The count is a number and setCount is a function. Always remember
+        that the first index in the array will always be an array and the 2nd
+        index will always be a setter function. If we only want value and not
+        function we can also write like this:
+      </p>
+      <Code code={C5} lang="js" />
+      <p>
+        This way we will get access to count value alone. We can write anything
+        inside the array, any name, any variable, everything is acceptable:
+      </p>
+      <Code code={C6} lang="js" />
+      <p>
+        Whatever we write will not affect the working of useState but as a
+        developer, there are some conventions that one should follow. If we
+        write <span class="font-semibold">[count, increase] = useState(0)</span
+        >, then other developers will never understand that increase is a setter
+        function. Thus, a good practice is to always add a set as a prefix to a
+        setter function. <span class="font-semibold"
+          >[count, setCount], [percentage, setPercentage], [isAdmin,
+          setIsAdmin], …</span
+        > these are good practices.
+      </p>
+      <Code code={C7} lang="js" />
+      <p>
+        Even if you write like this, there will not be any errors but this is
+        such a bad practice. In this setCount is a number and count is a setter
+        function but no one will know this except you. Thus there are some
+        conventions that we should always follow.
+      </p>
+      <h2 id="updating-usestate-with-direct-value">
+        Updating useState with direct value
+      </h2>
+      <p>
+        We know that setter functions are used to update the states. And
+        whenever the state is updated, the component is re-rendered. Look at the
+        following example:
+      </p>
+      <Code code={C8} lang="js" />
+      <p>
+        Here we are simply updating the count value by 1 whenever the button is
+        clicked. But what about the following following code?
+      </p>
+      <Code code={C9} lang="js" />
+      <p>
+        If we click the button, it will trigger the Component to re-render with
+        <span class="font-semibold">count=1</span>. What would happen if we
+        clicked the button again? It will invoke <span class="font-semibold"
+          >setCount(1)</span
+        > again, but as it is the same value it gets ignored and the <span
+          class="font-semibold">Component</span
+        > won’t re-render. Let’s see another example to better understand this:
+      </p>
+      <Code code={C10} lang="js" />
+      <p>
+        If we click the button 5 to 10 times, we will see that ‘Rendered’ is
+        printed in the console only twice. This means the component has not
+        re-rendered 5 to 10 times as React is getting the same state value on
+        the button click.
+      </p>
+      <p>
+        But if we initialize the state with an object instead of a number, then
+        the case will be different. Look at the below example:
+      </p>
+      <Code code={C11} lang="js" />
+      <p>
+        We are setting the same object {`{value: 1}`} whenever the button is clicked
+        so React shouldn’t re-render the Component right? But no, if we click the
+        button 10 times, the component will be rendered 10 times, because every time
+        we click the button, a new object is created, and although the object is
+        the same but their references are different so React will always assume that
+        both the object is different and therefore state is updated and Component
+        is re-rendered. That’s why the state should be simple like strings or numbers
+        and only use objects or arrays whenever when there is no option.
+      </p>
+      <h2 id="updating-usestate-with-function">
+        Updating useState with function
+      </h2>
+      <p>Another way of updating the state is using functions.</p>
+      <Code code={C12} lang="js" />
+      <p>
+        Setter functions will always have access to previous values (this
+        prevCount is also known as the latest count value). So we can use a
+        function this way and can update the state. We don’t need to have to
+        write prevCount, we can write anything. Here is one more example for
+        better understanding.
+      </p>
+      <Code code={C13} lang="js" />
+
+      <h2 id="an-interesting-example">An Interesting Example</h2>
+      <p>
+        We have seen two ways to update the state, one is direct modification
+        using values ad another is using function. So what’s the difference
+        between them. To understand this, first we need to understand that
+        whenever we update a state, it is not updated immediately. Whenever we
+        write useCount(count + 1) or useCount( (c) ={`>`} c + 1), React will acknowledge
+        and will schedule the update. And the value is updated in the next render
+        and not immediately. Let’s see a simple example to understand this.
+      </p>
+      <Code code={C14} lang="js" />
+      <p>
+        When the button is clicked, <span class="font-semibold"
+          >updateCount</span
+        >
+        function is invoked. Here we are using
+        <span class="font-semibold">setCount(count + 1)</span> then a for loop and
+        then we are printing the value of count. If we run this, we will see <span
+          class="font-semibold">‘Loop Ended’</span
+        > is printed and count value is printed. Now we can observe, that even after
+        the loop, the count value is still 0 and not 1. This is because React has
+        acknowledged that the count value needs to be updated to 1 but it will only
+        update it in the next render and not immediately. This is why React maintains
+        two values viz, count and latestCount. Please note that the implementation
+        of useState is quite complex and we are just simplifying it to better understand
+        it.
+      </p>
+      <Code code={C15} lang="js" />
+      <p>
+        React updates the states in batches that’s why it’s important to
+        understand how we are updating the states. See the following example:
+      </p>
+      <Code code={C16} lang="js" />
+      <p>
+        When we clicked the button, we called <span class="font-semibold"
+          >setCount(count + 1)</span
+        > and said React to update the count by 1. So React will update the <span
+          class="font-semibold">latestCount</span
+        > value from 0 to 1, but the <span class="font-semibold">count</span> value
+        will not updated immediately. Now, we call <span class="font-semibold"
+          >setCount(count + 1)</span
+        > 2nd time, and this time we tell React to update the count, so React will
+        take the value of count (which is still 0 because the count has not been
+        updated yet) and will add 1 and then assign to latestCount. Now latestCount
+        is again 1, and the count is still 0. Then we call <span
+          class="font-semibold">setCount(count + 1)</span
+        > the third time, and again this time, we are passing <span
+          class="font-semibold">(count + 1)</span
+        > but as we know, React updated
+        <span class="font-semibold">latestCount</span>, not count, because <span
+          class="font-semibold">count</span
+        > gets updated in batches, and the final value is updated in the next render.
+        So even the third time, we pass <span class="font-semibold"
+          >(count + 1)</span
+        > where the count is still 0, and the <span class="font-semibold"
+          >latestCount</span
+        > is 1.
+      </p>
+      <p>
+        So even if we call <span class="font-semibold">setCount(count + 1)</span
+        > three times or 100 times, the
+        <span class="font-semibold">count</span> value will be increased by one only.
+        This is because the <span class="font-semibold">setCount</span>
+        function uses <span class="font-semibold">(count + 1)</span>, where the <span
+          class="font-semibold">count</span
+        > is passed as 0 every time.
+      </p>
+      <Code code={C17} lang="js" />
+      <p>
+        But this is not the case if we update the state with functions. Because
+        with the function, we have access to the latestCount and not count.
+        Let’s see an example:
+      </p>
+      <Code code={C18} lang="js" />
+      <p>
+        Here, we clicked the button and updated the state using <span
+          class="font-semibold"
+          >setCount((c) ={">"}
+          c + 1)</span
+        >. React will acknowledge this and update the latestCount from 0 to 1,
+        but the count value is still 0. Then, we again passed <span
+          class="font-semibold"
+          >setCount((c) ={">"}
+          c + 1)</span
+        > and told React to update the state. Now, the latestCount becomes 2, and
+        the count remains 0. But how latestCount becomes 2? It’s because we update
+        the state using a function. <span class="font-semibold"
+          >(c)={">"} c + 1</span
+        > This is passed in the setState, and here, c is not count, c is referred
+        to as latestCount, so when the setState is called 2nd time with the latestCount,
+        the latestCount value is increased. Then again, we called setState 3rd time,
+        so the latestCount is updated to 3 from 2. Thus, the final count value becomes
+        3 in the next render.
+      </p>
+      <Code code={C19} lang="js" />
+      <p>
+        That is why if you update the state using a value, i.e., calling
+        <span class="font-semibold">setState(count + 1)</span> 100 times, the final
+        value will only be increased by 1 and not by 100 because every time, you
+        are passing count in setState. But if you update the state using functions,
+        i.e., calling <span class="font-semibold"
+          >setState((c) ={">"} c + 1)</span
+        > 100 times, then the final value is updated by 100 and not by 1 because
+        here you are passing latestCount (c)and not the count value every time.
+      </p>
+      <p>
+        The React team, renowned for their expertise, has comprehensively
+        explained this concept in their latest blog. This resource can be
+        invaluable in deepening your understanding of updating state in React.
+        You can learn more about this <LINK
+          text="here"
+          url="https://react.dev/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time"
+        />.
+      </p>
+
+      <h2 id="updating-usestate-with-lazy-initialisation">
+        Updating useState with lazy initialisation
+      </h2>
+      <p>
+        We can initialize useState with a function that will be evaluated only
+        in the first render. We can do something like this:
+      </p>
+      <Code code={C20} lang="js" />
+      <p>
+        This is known as lazy initialization in React, where we pass a function
+        to useState instead of an initial state value. This is particularly
+        useful when the initial state requires heavy computation or when it
+        depends on props that might change over time. It helps improve the app’s
+        performance by delaying the computation until needed. The above example
+        is ineffective because returning 0 doesn’t require much computation.
+      </p>
+
+      <h2 id="understanding-usereducer">Understanding useReducer</h2>
+      <p>
+        Now that we have learned about useState, it’s time to dive deep into
+        useReducer and its usage. useReducer is also another option for managing
+        the React state. When your app grows and has a vast number of states, it
+        could be more effective to use 10 or 20 useState; instead, we can use
+        useReducer to manage the app’s huge state. Let’s see a simple usage of
+        useReducer:
+      </p>
+      <Code code={C21} lang="js" />
+      <p>
+        useReducer takes two parameters: <span class="font-semibold"
+          >reducer</span
+        > and <span class="font-semibold">initialState</span>. We have defined
+        our reducer function above, and our initial state is <span
+          class="font-semibold"
+          >{"{count: 0}"}
+        </span>. The reducer function takes the state and the action. We can use
+        if-else or switch statements and modify our state based on your action
+        type. If the action type is <span class="font-semibold">INCREMENT</span
+        >, then we need to increase the count value by 1, and if the action type
+        is <span class="font-semibold">DECREMENT</span>, then we need to
+        decrease the count value by 1.
+      </p>
+      <p>
+        Most people think that initialState should be an object but it’s not
+        true. you can pass any primitive data type as well such as numbers or
+        strings. Here is one example:
+      </p>
+      <Code code={C22} lang="js" />
+
+      <h2 id="updating-usereducer-with-lazy-initialisation">
+        Updating useReducer with lazy initialisation
+      </h2>
+      <p>
+        You can pass the init function as a third parameter in useReducer if you
+        want to initialize the useReducer lazily. The parameters needed for the
+        init function should be passed as a second parameter in useReducer. Here
+        is an example:
+      </p>
+      <Code code={C23} lang="js" />
+
+      <h2 id="implementing-usestate-with-usereducer">
+        Implementing useState with useReducer
+      </h2>
+      <p>
+        We have learned useState and useReducer separately. But to understand
+        these deeply, let’s ask: Can we implement useState using useReducer?
+      </p>
+      <p>
+        It’s 100% possible to implement the useState using useReducer, and it is
+        said that useState is implemented internally using useReducer. Please
+        note that what we are implementing is a simple version, and React teams
+        have implemented it more efficiently. Here is an implementatio code.
+      </p>
+      <Code code={C24} lang="js" title="useMyState.jsx" />
+      <p>Now if we want to use it in our app, we can use it like this:</p>
+      <Code code={C24} lang="js" title="Component.jsx" />
+      <p>
+        This is pretty straightforward, but let’s understand if you need to. We
+        know that useState provides <span class="font-semibold">count</span> and
+        <span class="font-semibold">setCount</span>, where setCount is a setter
+        function. We can update the state by <span class="font-semibold"
+          >setCount(count + 1)</span
+        >, where we are passing direct value in the useState. Otherwise, we can
+        also pass the function to update the state, such as <span
+          class="font-semibold"
+          >useState((prevCount) ={">"}
+          prevCount + 1)</span
+        >. So, in the <span class="font-semibold">reducer</span> function, we will
+        first identify whether we are passing a function or direct value. If we pass
+        direct value, we will update the state, or else if we pass the function,
+        then we will call that function with the <span class="font-semibold"
+          >currentState</span
+        > as a parameter.
+      </p>
+      <p>
+        We have seen how easily we can implement our custom useState using
+        useReducer. Now let’s ask: <span class="italic font-semibold"
+          >Can we do vice-versa? Can we implement useReducer using useState?</span
+        >
+      </p>
+
+      <h2 id="implementing-usereducer-with-usestate">
+        Implementing useReducer with useState
+      </h2>
+      <p>
+        Surprisingly, it is possible to implement useReducer with useState. Here
+        is an example:
+      </p>
+      <Code code={C26} lang="js" title="useMyReducer.jsx" />
+      <p>Now let’s see the usage:</p>
+      <Code code={C27} lang="js" title="Component.jsx" />
+      <p>
+        Let’s understand the implementation. Our custom useReducer will also
+        need a reducer function and an initialState. Whatever initialState is
+        passed, we will set it and maintain the state using React’s useState.
+        Our useReducer hook will return the state (which we are maintaining
+        using React’s useState and dispatch function). We also created our
+        dispatch function, which takes the currentState and action. Since the
+        action is an object, we will pass that action on to the user-created
+        reducer. As we know, a reducer takes state and action object, and based
+        on the action type, it returns the modified state object, so we will
+        store that new state in the variable newState. Then, we will pass the
+        latest state to setState, which will update the state; hence, the
+        overall state gets updated. This might seem unclear, but if you have
+        hands-on useState and useReducer, you can understand the code easily.
+      </p>
+      <p>
+        We have come to an end, and we have learned the best practices related
+        to useState and useReducer. We have also learned how to implement
+        useState with useReducer and vice versa. I am pretty sure if the
+        interviewer asks you questions on useState and useReducer, you will kill
+        it!
+      </p>
+      <Reminder />
+    </Content>
+  </Container>
+  <Footer />
+</HTML>

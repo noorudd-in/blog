@@ -76,19 +76,19 @@ const readingTime = 2;
       </p>
       <ul>
         <li>
-          <span class="font-semibold">Component A (House):</span> Any amount
-          that you spend on fixed items such as house rent, house maintenance,
-          house tax, and house mortgage.
+          <span class="font-semibold">Component A (House):</span> Any amount that
+          you spend on fixed items such as house rent, house maintenance, house tax,
+          and house mortgage.
         </li>
         <li>
-          <span class="font-semibold">Component B (Utility):</span> Any amount
-          that you spend on utilities such as Electricity, Gas, Water, Garbage,
-          Internet, Wifi, Mobile Recharge, etc.
+          <span class="font-semibold">Component B (Utility):</span> Any amount that
+          you spend on utilities such as Electricity, Gas, Water, Garbage, Internet,
+          Wifi, Mobile Recharge, etc.
         </li>
         <li>
           <span class="font-semibold">Component C (Food):</span> Any amount that
-          you spend on groceries, food items, restaurants, take-away or dining,
-          diets, child food care, etc.
+          you spend on groceries, food items, restaurants, take-away or dining, diets,
+          child food care, etc.
         </li>
         <li>
           <span class="font-semibold">Component D (Transport):</span> Any amount
@@ -97,15 +97,14 @@ const readingTime = 2;
         </li>
         <li>
           <span class="font-semibold">Component E (Insurance):</span> Any amount
-          that you pay for insurance, it may be life, health, or other
-          insurance.
+          that you pay for insurance, it may be life, health, or other insurance.
         </li>
         <li>
-          <span class="font-semibold">Component F (Other):</span> Any other
-          expenses that are needed or useful to you such as ongoing medicines,
-          entertainment subscriptions, educational books or course expenses,
-          etc. Don't include expenses that can be compromised like expensive
-          travel, or buying shoes or sneakers, and so on.
+          <span class="font-semibold">Component F (Other):</span> Any other expenses
+          that are needed or useful to you such as ongoing medicines, entertainment
+          subscriptions, educational books or course expenses, etc. Don't include
+          expenses that can be compromised like expensive travel, or buying shoes
+          or sneakers, and so on.
         </li>
       </ul>
       <p>
@@ -119,21 +118,20 @@ const readingTime = 2;
       </p>
       <ul>
         <li>
-          <span class="font-semibold">Parents Amount:</span> If you live with
-          your parents, then you also need to take care of it. Multiply the
-          Basic Amount by 0.8 (if you have both your parents) or 0.4 (if you
-          have a single parent) and mark it as Parents Amount.
+          <span class="font-semibold">Parents Amount:</span> If you live with your
+          parents, then you also need to take care of it. Multiply the Basic Amount
+          by 0.8 (if you have both your parents) or 0.4 (if you have a single parent)
+          and mark it as Parents Amount.
         </li>
         <li>
-          <span class="font-semibold">Wife Amount:</span> If you are married,
-          then you need to multiply the Basic Amount by 0.8 and mark that amount
-          as Wife Amount.
+          <span class="font-semibold">Wife Amount:</span> If you are married, then
+          you need to multiply the Basic Amount by 0.8 and mark that amount as Wife
+          Amount.
         </li>
         <li>
-          <span class="font-semibold">Kids Amount:</span> If you or your family
-          have kids then for every kid you need to take the equivalent Basic
-          Amount. If you have 2 kids, then the amount will be 2 * Basic Amount
-          and so on.
+          <span class="font-semibold">Kids Amount:</span> If you or your family have
+          kids then for every kid you need to take the equivalent Basic Amount. If
+          you have 2 kids, then the amount will be 2 * Basic Amount and so on.
         </li>
       </ul>
       <p>
@@ -262,6 +260,17 @@ const readingTime = 2;
         </div>
 
         <div class="mt-3">
+          <label>Purchased Health Insurance?</label>
+          <select
+            id="insurance"
+            class="my-1 p-1 border text-md rounded-md bg-gray-700 border-gray-600 text-white"
+          >
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+
+        <div class="mt-3">
           <label>Calculate EF for</label>
           <select
             id="months"
@@ -308,8 +317,8 @@ const readingTime = 2;
         </li>
       </ul>
       <p>
-        <span class="font-semibold">Final Amount in INR:</span> (20,000 * 12) +
-        16,000 + 0 + 0 = <span class="font-semibold">INR 2,56,000</span>
+        <span class="font-semibold">Final Amount in INR:</span> (20,000 * 12) + 16,000
+        + 0 + 0 = <span class="font-semibold">INR 2,56,000</span>
       </p>
       <p>
         <span class="font-semibold">Final Amount in USD:</span> (250 * 12) + 200
@@ -335,9 +344,8 @@ const readingTime = 2;
         </li>
       </ul>
       <p>
-        <span class="font-semibold">Final Amount in INR:</span> (20,000 * 12) +
-        8,000 + 16,000 + 40,000 = <span class="font-semibold">INR 3,04,000</span
-        >
+        <span class="font-semibold">Final Amount in INR:</span> (20,000 * 12) + 8,000
+        + 16,000 + 40,000 = <span class="font-semibold">INR 3,04,000</span>
       </p>
       <p>
         <span class="font-semibold">Final Amount in USD:</span> (250 * 12) + 100
@@ -350,52 +358,57 @@ const readingTime = 2;
 </HTML>
 
 <script is:inline>
-let calculate = document.getElementById("calculate");
-const handleCalculate = () => {
-  let compA = document.getElementById("compA").value;
-  let compB = document.getElementById("compB").value;
-  let compC = document.getElementById("compC").value;
-  let compD = document.getElementById("compD").value;
-  let compE = document.getElementById("compE").value;
-  let compF = document.getElementById("compF").value;
-  let parents = document.getElementById("parents").value;
-  let wife = document.getElementById("wife").value;
-  let kids = document.getElementById("kids").value;
-  let months = document.getElementById("months").value;
-  let finalAmount = document.getElementById("finalAmount");
+  let calculate = document.getElementById("calculate");
+  const handleCalculate = () => {
+    let compA = document.getElementById("compA").value;
+    let compB = document.getElementById("compB").value;
+    let compC = document.getElementById("compC").value;
+    let compD = document.getElementById("compD").value;
+    let compE = document.getElementById("compE").value;
+    let compF = document.getElementById("compF").value;
+    let parents = document.getElementById("parents").value;
+    let wife = document.getElementById("wife").value;
+    let insurance = document.getElementById("insurance").value;
+    let kids = document.getElementById("kids").value;
+    let months = document.getElementById("months").value;
+    let finalAmount = document.getElementById("finalAmount");
 
-  if (
-    compA == "" ||
-    compB == "" ||
-    compC == "" ||
-    compD == "" ||
-    compE == "" ||
-    compF == "" ||
-    kids == ""
-  ) {
-    alert("All fields are required");
-    return;
-  }
-  let basic = +compA + +compB + +compC + +compD + +compE + +compF;
+    if (
+      compA == "" ||
+      compB == "" ||
+      compC == "" ||
+      compD == "" ||
+      compE == "" ||
+      compF == "" ||
+      kids == ""
+    ) {
+      alert("All fields are required");
+      return;
+    }
+    let basic = +compA + +compB + +compC + +compD + +compE + +compF;
 
-  let parentsAmount = +parents * 0.4 * basic;
-  let wifeAmount = +wife * 0.8 * basic;
-  let kidsAmount = +kids * basic;
-  let final = parseInt(
-    basic * +months + parentsAmount + wifeAmount + kidsAmount
-  );
-  let len = final.toString().length;
-  if (len > 3) {
-    final = final.toString();
-    let lastThree = final.slice(final.length - 3, final.length);
-    let otherNumbers = final.slice(0, final.length - 3);
-    let res =
-      otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + lastThree;
-    finalAmount.innerText = res;
-  } else {
-    finalAmount.innerText = final;
-  }
-};
+    let parentsAmount = +parents * 0.4 * basic;
+    let wifeAmount = +wife * 0.8 * basic;
+    let kidsAmount = +kids * basic;
+    let final = parseInt(
+      basic * +months + parentsAmount + wifeAmount + kidsAmount
+    );
+    if (insurance == "1") {
+      final = final * 0.7;
+      console.log(final);
+    }
+    let len = final.toString().length;
+    if (len > 3) {
+      final = final.toString();
+      let lastThree = final.slice(final.length - 3, final.length);
+      let otherNumbers = final.slice(0, final.length - 3);
+      let res =
+        otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + lastThree;
+      finalAmount.innerText = res;
+    } else {
+      finalAmount.innerText = final;
+    }
+  };
 
-calculate.addEventListener("click", handleCalculate);
+  calculate.addEventListener("click", handleCalculate);
 </script>

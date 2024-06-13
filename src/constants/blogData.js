@@ -1,5 +1,12 @@
 export const blogData = [
   {
+    title: "Understanding React Local State The Right Way!",
+    date: "May 06, 2024",
+    slug: "understanding-react-local-state-the-right-way",
+    category: "tech",
+    tags: ["state-management", "web-development", "reactjs"],
+  },
+  {
     title: "From HTML to JSX - A Deep Dive",
     date: "Jan 15, 2024",
     slug: "from-html-to-jsx-a-deep-dive",
