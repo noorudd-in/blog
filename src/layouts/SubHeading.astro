@@ -1,5 +1,5 @@
 ---
-const { title, subtitle, readingTime } = Astro.props;
+const { title, subtitle, readingTime, medium } = Astro.props;
 ---
 
 <div class="mt-5 sm:mt-4 mb-5">
@@ -20,5 +20,22 @@ const { title, subtitle, readingTime } = Astro.props;
     <div class="text-neutral-400 sm:text-xl text-md">
       {subtitle}
     </div>
+    {
+      medium && (
+        <div class="flex">
+          <div class="text-neutral-400 sm:text-xl text-md mx-2">&#183;</div>
+          <div class="text-neutral-400 sm:text-xl text-md underline underline-offset-4 cursor-pointer hover:text-emerald-300">
+            <a
+              href={medium}
+              rel="external"
+              title="Medium Article"
+              target="_blank"
+            >
+              Medium
+            </a>
+          </div>
+        </div>
+      )
+    }
   </div>
 </div>
