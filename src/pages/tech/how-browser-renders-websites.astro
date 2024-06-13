@@ -8,7 +8,7 @@ import Footer from "../../layouts/Footer.astro";
 import Tags from "../../layouts/Tags.astro";
 import LINK from "../../layouts/LINK.astro";
 import QUOTE from "../../layouts/QUOTE.astro";
-import Reminder from "../../layouts/Reminder.astro";
+import Conclusion from "../../layouts/Conclusion.astro";
 import Navigation from "../../layouts/Navigation.astro";
 import { Code } from "astro-expressive-code/components";
 import { C1, C2 } from "../../snippets/how-browser-renders-websites.js";
@@ -69,8 +69,7 @@ const navigations = [
         />, which is used by Chromium (Chrome-based browsers), or <LINK
           text="Webkit"
           url="https://webkit.org/"
-        /> which is used by Safari, Apple are some of the popular browser
-        engines.
+        /> which is used by Safari, Apple are some of the popular browser engines.
       </p>
       <p>
         You can even check the <LINK
@@ -199,9 +198,9 @@ const navigations = [
         Whenever a DOM tree is created and if the browser encounters a {
           '<script scr="script.js"></script>'
         } tag, the DOM creation is paused and halted at that point. Why? Because
-        JavaScript has the ability to manipulate the DOM elements. The browser
-        first reads the content of the JavaScript file, then the DOM is resumed,
-        and changes are made based on both the HTML and JS content.
+        JavaScript has the ability to manipulate the DOM elements. The browser first
+        reads the content of the JavaScript file, then the DOM is resumed, and changes
+        are made based on both the HTML and JS content.
       </p>
       <QUOTE>
         This is why, it is advised to place the script tag after the body or at
@@ -217,7 +216,7 @@ const navigations = [
       <Code code={C1} lang="html" />
       <p>
         Here, the alert will not be created because the element {"<h1>"}
-         with the ID name, the script is trying to access is not created yet!
+        with the ID name, the script is trying to access is not created yet!
       </p>
       <p>
         This matters because if there happens to be a heavy JS file where lots
@@ -241,13 +240,7 @@ const navigations = [
         delayed to reduce the latency of our webpage as low as possible to load
         the website much faster.
       </p>
-      <h2 id="conclusion">Conclusion</h2>
-      <p>
-        If you have came so far and found this to be valuable, I appreciate your
-        clap on this article. Do follow me for more Web Development and DSA
-        kinds of stuffs.
-      </p>
-      <Reminder />
+      <Conclusion />
     </Content>
     <Footer />
   </Container>

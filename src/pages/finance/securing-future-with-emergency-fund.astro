@@ -6,12 +6,12 @@ import SubHeading from "../../layouts/SubHeading.astro";
 import Content from "../../layouts/Content.astro";
 import Footer from "../../layouts/Footer.astro";
 import Disclaimer from "../../layouts/Disclaimer.astro";
-import Reminder from "../../layouts/Reminder.astro";
+import Conclusion from "../../layouts/Conclusion.astro";
 
 const blogTitle = "Securing Future with Emergency Fund";
 const blogDescription = "";
 const blogDate = "12 January, 2024";
-const readingTime = 2;
+const readingTime = 5;
 ---
 
 <HTML title={blogTitle} description={blogDescription}>
@@ -351,7 +351,7 @@ const readingTime = 2;
         <span class="font-semibold">Final Amount in USD:</span> (250 * 12) + 100
         + 200 + 500 = <span class="font-semibold">3,800$</span>
       </p>
-      <Reminder />
+      <Conclusion />
     </Content>
   </Container>
   <Footer />
@@ -395,7 +395,6 @@ const readingTime = 2;
     );
     if (insurance == "1") {
       final = final * 0.7;
-      console.log(final);
     }
     let len = final.toString().length;
     if (len > 3) {
