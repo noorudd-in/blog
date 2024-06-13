@@ -54,14 +54,16 @@ console.log(tagName);
       {
         data.map((blog) => {
           return (
-            <a
-              class="hover:text-white cursor-pointer flex flex-col group items-start justify-between py-2 sm:flex-row sm:items-center sm:py-4 sm:text-2xl text-md text-neutral-500 transition-colors"
-              href={`/${blog.category}/${blog.slug}`}
-              id={blog.category}
-            >
-              <span class="text-white">{blog.title}</span>
-              <span class="sm:text-lg mt-1 sm:mt-0 text-sm">{blog.date}</span>
-            </a>
+            <div class="text-white hover:text-emerald-300">
+              <a
+                class="cursor-pointer flex flex-col group items-start justify-between py-2 sm:flex-row sm:items-center sm:py-4 sm:text-2xl text-md transition-colors"
+                href={`/${blog.category}/${blog.slug}`}
+                id={blog.category + blog.slug.slice(10)}
+              >
+                <span>{blog.title}</span>
+                <span class="sm:text-lg mt-1 sm:mt-0 text-sm">{blog.date}</span>
+              </a>
+            </div>
           );
         })
       }

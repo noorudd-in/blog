@@ -7,7 +7,7 @@ import Content from "../../layouts/Content.astro";
 import Footer from "../../layouts/Footer.astro";
 import Disclaimer from "../../layouts/Disclaimer.astro";
 import LINK from "../../layouts/LINK.astro";
-import Reminder from "../../layouts/Reminder.astro";
+import Conclusion from "../../layouts/Conclusion.astro";
 
 const blogTitle = "";
 const blogDescription = "";
@@ -26,6 +26,8 @@ const readingTime = 2;
     <Disclaimer />
     <Content>
       <p>Hello</p>
+      <h2 id=""></h2>
+       <Conclusion />
     </Content>
   </Container>
   <Footer />
