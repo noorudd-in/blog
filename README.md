@@ -8,7 +8,7 @@ I wanted to have more control over my writing. I usually spend weeks to months w
 
 # Best Practices
 
-I have choose Astro over ReactJS and NextJS as articles are just bunch of statis pages. With this, I have made sure to follow best practices and have met all the SEO requirements!
+I have choose Astro over ReactJS and NextJS as articles are just bunch of static pages. With this, I have made sure to follow best practices and have met all the SEO requirements!
 
 ![Blog Screenshot](https://github.com/noorudd-in/blog/blob/main/src/images/Blog-Screenschot.png?raw=true)
 
