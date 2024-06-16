@@ -6,6 +6,12 @@ A curated blog website with all my readings!
 
 I wanted to have more control over my writing. I usually spend weeks to months writing a detailed blog and explaining it like a child! It reflects the knowledge and learning that I have acquired over a period of time. I have always wanted to improve my communication skills!
 
+# Best Practices
+
+I have choose Astro over ReactJS and NextJS as articles are just bunch of statis pages. With this, I have made sure to follow best practices and have met all the SEO requirements!
+
+![Blog Screenshot](https://github.com/noorudd-in/blog/blob/main/src/images/Blog-Screenschot.png?raw=true)
+
 # Tech Stack
 
 - `Astro`
