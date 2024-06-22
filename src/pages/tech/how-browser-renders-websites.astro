@@ -12,6 +12,14 @@ import Conclusion from "../../layouts/Conclusion.astro";
 import Navigation from "../../layouts/Navigation.astro";
 import { Code } from "astro-expressive-code/components";
 import { C1, C2 } from "../../snippets/how-browser-renders-websites.js";
+import axios from "axios";
+
+const response = await axios.get(import.meta.env.API_URL);
+const data = response.data;
+const newData = { ...data };
+newData.tech["how-browser-renders-websites"] =
+  data.tech["how-browser-renders-websites"] + 1;
+axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "How browser renders websites?";
 const blogDescription = "All about BOM and DOM painting.";
@@ -36,6 +44,7 @@ const navigations = [
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://noorudd-in.medium.com/how-browser-renders-websites-3a957f51925b"
+      views={data?.tech["how-browser-renders-websites"]}
     />
     <Tags tags={tags} />
     <Content>

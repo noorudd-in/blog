@@ -1,5 +1,29 @@
 ---
-const { title, subtitle, readingTime, medium } = Astro.props;
+const { title, subtitle, readingTime, medium, views } = Astro.props;
+let totalViews = views.toString();
+let len = totalViews.length;
+let parsedViews = totalViews;
+if (len == 5 && totalViews[2] > 0) {
+  parsedViews = totalViews.slice(0, 2) + "." + totalViews[2] + "K";
+}
+if (len == 5 && totalViews[2] == 0) {
+  parsedViews = totalViews.slice(0, 2) + "K";
+}
+if (len == 6 && totalViews[3] > 0) {
+  parsedViews = totalViews.slice(0, 3) + "." + totalViews[3] + "K";
+}
+if (len == 6 && totalViews[3] == 0) {
+  parsedViews = totalViews.slice(0, 3) + "K";
+}
+if (len == 7 && totalViews[1] > 0) {
+  parsedViews = totalViews[0] + "." + totalViews[1] + "M";
+}
+if (len == 7 && totalViews[1] == 0) {
+  parsedViews = totalViews[0] + "M";
+}
+if (len > 7) {
+  parsedViews = totalViews.slice(0, len - 6) + "M";
+}
 ---
 
 <div class="mt-5 sm:mt-4 mb-5">
@@ -21,6 +45,37 @@ const { title, subtitle, readingTime, medium } = Astro.props;
       {subtitle}
     </div>
     {
+      (
+        <div class="flex">
+          <div class="text-neutral-400 sm:text-xl text-md mx-2">&#183;</div>
+          <div class="text-neutral-400 sm:text-xl text-md flex">
+            <svg
+              class="sm:w-7 sm:h-8 w-6 h-6 text-neutral-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24">
+              <path
+                stroke="currentColor"
+                stroke-width="2"
+                d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+              />
+              <path
+                stroke="currentColor"
+                stroke-width="2"
+                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+            </svg>
+            <span class="ml-2">{parsedViews}</span>
+          </div>
+        </div>
+      )
+    }
+    {
+      /* 
+    {
       medium && (
         <div class="flex">
           <div class="text-neutral-400 sm:text-xl text-md mx-2">&#183;</div>
@@ -31,11 +86,13 @@ const { title, subtitle, readingTime, medium } = Astro.props;
               title="Medium Article"
               target="_blank"
             >
-              Medium
+              Read on Medium
             </a>
           </div>
         </div>
       )
+    }
+    */
     }
   </div>
 </div>

@@ -26,6 +26,14 @@ import {
   C13,
   C14,
 } from "../../snippets/from-html-to-jsx-a-deep-dive";
+import axios from "axios";
+
+const response = await axios.get(import.meta.env.API_URL);
+const data = response.data;
+const newData = { ...data };
+newData.tech["from-html-to-jsx-a-deep-dive"] =
+  data.tech["from-html-to-jsx-a-deep-dive"] + 1;
+axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "From HTML to JSX - A Deep Dive";
 const blogDescription =
@@ -56,6 +64,7 @@ const navigations = [
       title={blogTitle}
       subtitle={blogDate}
       readingTime={readingTime}
+      views={data?.tech["from-html-to-jsx-a-deep-dive"]}
     />
     <Tags tags={tags} />
     <Content>

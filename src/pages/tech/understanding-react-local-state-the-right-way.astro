@@ -39,6 +39,14 @@ import {
   C26,
   C27,
 } from "../../snippets/understanding-react-local-state-the-right-way";
+import axios from "axios";
+
+const response = await axios.get(import.meta.env.API_URL);
+const data = response.data;
+const newData = { ...data };
+newData.tech["understanding-react-local-state-the-right-way"] =
+  data.tech["understanding-react-local-state-the-right-way"] + 1;
+axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "Understanding React Local State The Right Way!";
 const blogDescription = "A comprehensive guide to Reacts useState hook!";
@@ -85,6 +93,7 @@ const navigations = [
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://noorudd-in.medium.com/understanding-react-local-state-the-right-way-c040264a0b59"
+      views={data?.tech["understanding-react-local-state-the-right-way"]}
     />
     <Tags tags={tags} />
     <Content>
@@ -244,15 +253,15 @@ const navigations = [
         >
         function is invoked. Here we are using
         <span class="font-semibold">setCount(count + 1)</span> then a for loop and
-        then we are printing the value of count. If we run this, we will see <span
-          class="font-semibold">‘Loop Ended’</span
-        > is printed and count value is printed. Now we can observe, that even after
-        the loop, the count value is still 0 and not 1. This is because React has
-        acknowledged that the count value needs to be updated to 1 but it will only
-        update it in the next render and not immediately. This is why React maintains
-        two values viz, count and latestCount. Please note that the implementation
-        of useState is quite complex and we are just simplifying it to better understand
-        it.
+        then we are printing the value of count. If we run this, we will see
+
+        <span class="font-semibold">‘Loop Ended’</span> is printed and count value
+        is printed. Now we can observe, that even after the loop, the count value
+        is still 0 and not 1. This is because React has acknowledged that the count
+        value needs to be updated to 1 but it will only update it in the next render
+        and not immediately. This is why React maintains two values viz, count and
+        latestCount. Please note that the implementation of useState is quite complex
+        and we are just simplifying it to better understand it.
       </p>
       <Code code={C15} lang="js" />
       <p>
@@ -265,9 +274,9 @@ const navigations = [
           >setCount(count + 1)</span
         > and said React to update the count by 1. So React will update the <span
           class="font-semibold">latestCount</span
-        > value from 0 to 1, but the <span class="font-semibold">count</span> value
-        will not updated immediately. Now, we call <span class="font-semibold"
-          >setCount(count + 1)</span
+        > value from 0 to 1, but the <span class="font-semibold">count</span>
+        value will not updated immediately. Now, we call <span
+          class="font-semibold">setCount(count + 1)</span
         > 2nd time, and this time we tell React to update the count, so React will
         take the value of count (which is still 0 because the count has not been
         updated yet) and will add 1 and then assign to latestCount. Now latestCount
@@ -290,9 +299,9 @@ const navigations = [
         > three times or 100 times, the
         <span class="font-semibold">count</span> value will be increased by one only.
         This is because the <span class="font-semibold">setCount</span>
-        function uses <span class="font-semibold">(count + 1)</span>, where the <span
-          class="font-semibold">count</span
-        > is passed as 0 every time.
+        function uses <span class="font-semibold">(count + 1)</span>, where the
+
+        <span class="font-semibold">count</span> is passed as 0 every time.
       </p>
       <Code code={C17} lang="js" />
       <p>
@@ -420,6 +429,7 @@ const navigations = [
       <p>
         This is pretty straightforward, but let’s understand if you need to. We
         know that useState provides <span class="font-semibold">count</span> and
+
         <span class="font-semibold">setCount</span>, where setCount is a setter
         function. We can update the state by <span class="font-semibold"
           >setCount(count + 1)</span

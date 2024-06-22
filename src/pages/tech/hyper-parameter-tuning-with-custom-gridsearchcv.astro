@@ -23,6 +23,14 @@ import {
   C10,
   C11,
 } from "../../snippets/hyper-parameter-tuning-with-custom-gridsearchcv";
+import axios from "axios";
+
+const response = await axios.get(import.meta.env.API_URL);
+const data = response.data;
+const newData = { ...data };
+newData.tech["hyper-parameter-tuning-with-custom-gridsearchcv"] =
+  data.tech["hyper-parameter-tuning-with-custom-gridsearchcv"] + 1;
+axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "Hyper-parameter Tuning with Custom GridSearchCV";
 const blogDescription =
@@ -49,6 +57,7 @@ const navigations = [
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://medium.com/codex/hyper-parameter-tuning-with-custom-gridsearchcv-d5212f218cc0"
+      views={data?.tech["hyper-parameter-tuning-with-custom-gridsearchcv"]}
     />
     <Tags tags={tags} />
     <Content>
