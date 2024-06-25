@@ -39,14 +39,6 @@ import {
   C26,
   C27,
 } from "../../snippets/understanding-react-local-state-the-right-way";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.tech["understanding-react-local-state-the-right-way"] =
-  data.tech["understanding-react-local-state-the-right-way"] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "Understanding React Local State The Right Way!";
 const blogDescription = "A comprehensive guide to Reacts useState hook!";
@@ -93,7 +85,7 @@ const navigations = [
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://noorudd-in.medium.com/understanding-react-local-state-the-right-way-c040264a0b59"
-      views={data?.tech["understanding-react-local-state-the-right-way"]}
+      views="0"
     />
     <Tags tags={tags} />
     <Content>
@@ -128,8 +120,9 @@ const navigations = [
       </p>
       <h2 id="custom-hooks">Custom Hooks</h2>
       <p>
-        Let’s create a <span class="font-semibold">useCount</span> custom hook and
-        manage the state in that custom hook. We will use the same example as above:
+        Let’s create a <span class="font-semibold">useCount</span> custom hook
+        and manage the state in that custom hook. We will use the same example
+        as above:
       </p>
       <div class="mb-2">
         <Code code={C2} lang="js" title="useCount.jsx" />
@@ -213,14 +206,15 @@ const navigations = [
       </p>
       <Code code={C11} lang="js" />
       <p>
-        We are setting the same object {`{value: 1}`} whenever the button is clicked
-        so React shouldn’t re-render the Component right? But no, if we click the
-        button 10 times, the component will be rendered 10 times, because every time
-        we click the button, a new object is created, and although the object is
-        the same but their references are different so React will always assume that
-        both the object is different and therefore state is updated and Component
-        is re-rendered. That’s why the state should be simple like strings or numbers
-        and only use objects or arrays whenever when there is no option.
+        We are setting the same object {`{value: 1}`} whenever the button is
+        clicked so React shouldn’t re-render the Component right? But no, if we
+        click the button 10 times, the component will be rendered 10 times,
+        because every time we click the button, a new object is created, and
+        although the object is the same but their references are different so
+        React will always assume that both the object is different and therefore
+        state is updated and Component is re-rendered. That’s why the state
+        should be simple like strings or numbers and only use objects or arrays
+        whenever when there is no option.
       </p>
       <h2 id="updating-usestate-with-function">
         Updating useState with function
@@ -242,26 +236,29 @@ const navigations = [
         using values ad another is using function. So what’s the difference
         between them. To understand this, first we need to understand that
         whenever we update a state, it is not updated immediately. Whenever we
-        write useCount(count + 1) or useCount( (c) ={`>`} c + 1), React will acknowledge
-        and will schedule the update. And the value is updated in the next render
-        and not immediately. Let’s see a simple example to understand this.
+        write useCount(count + 1) or useCount( (c) ={`>`} c + 1), React will
+        acknowledge and will schedule the update. And the value is updated in
+        the next render and not immediately. Let’s see a simple example to
+        understand this.
       </p>
       <Code code={C14} lang="js" />
       <p>
         When the button is clicked, <span class="font-semibold"
           >updateCount</span
         >
-        function is invoked. Here we are using
-        <span class="font-semibold">setCount(count + 1)</span> then a for loop and
-        then we are printing the value of count. If we run this, we will see
+         function is invoked. Here we are using
+        <span class="font-semibold">setCount(count + 1)</span> then a for loop
+        and then we are printing the value of count. If we run this, we will see
 
-        <span class="font-semibold">‘Loop Ended’</span> is printed and count value
-        is printed. Now we can observe, that even after the loop, the count value
-        is still 0 and not 1. This is because React has acknowledged that the count
-        value needs to be updated to 1 but it will only update it in the next render
-        and not immediately. This is why React maintains two values viz, count and
-        latestCount. Please note that the implementation of useState is quite complex
-        and we are just simplifying it to better understand it.
+
+        <span class="font-semibold">‘Loop Ended’</span> is printed and count
+        value is printed. Now we can observe, that even after the loop, the
+        count value is still 0 and not 1. This is because React has acknowledged
+        that the count value needs to be updated to 1 but it will only update it
+        in the next render and not immediately. This is why React maintains two
+        values viz, count and latestCount. Please note that the implementation
+        of useState is quite complex and we are just simplifying it to better
+        understand it.
       </p>
       <Code code={C15} lang="js" />
       <p>
@@ -275,20 +272,20 @@ const navigations = [
         > and said React to update the count by 1. So React will update the <span
           class="font-semibold">latestCount</span
         > value from 0 to 1, but the <span class="font-semibold">count</span>
-        value will not updated immediately. Now, we call <span
+         value will not updated immediately. Now, we call <span
           class="font-semibold">setCount(count + 1)</span
-        > 2nd time, and this time we tell React to update the count, so React will
-        take the value of count (which is still 0 because the count has not been
-        updated yet) and will add 1 and then assign to latestCount. Now latestCount
-        is again 1, and the count is still 0. Then we call <span
+        > 2nd time, and this time we tell React to update the count, so React
+        will take the value of count (which is still 0 because the count has not
+        been updated yet) and will add 1 and then assign to latestCount. Now
+        latestCount is again 1, and the count is still 0. Then we call <span
           class="font-semibold">setCount(count + 1)</span
         > the third time, and again this time, we are passing <span
           class="font-semibold">(count + 1)</span
         > but as we know, React updated
         <span class="font-semibold">latestCount</span>, not count, because <span
           class="font-semibold">count</span
-        > gets updated in batches, and the final value is updated in the next render.
-        So even the third time, we pass <span class="font-semibold"
+        > gets updated in batches, and the final value is updated in the next
+        render. So even the third time, we pass <span class="font-semibold"
           >(count + 1)</span
         > where the count is still 0, and the <span class="font-semibold"
           >latestCount</span
@@ -297,9 +294,10 @@ const navigations = [
       <p>
         So even if we call <span class="font-semibold">setCount(count + 1)</span
         > three times or 100 times, the
-        <span class="font-semibold">count</span> value will be increased by one only.
-        This is because the <span class="font-semibold">setCount</span>
-        function uses <span class="font-semibold">(count + 1)</span>, where the
+        <span class="font-semibold">count</span> value will be increased by one
+        only. This is because the <span class="font-semibold">setCount</span>
+         function uses <span class="font-semibold">(count + 1)</span>, where the
+
 
         <span class="font-semibold">count</span> is passed as 0 every time.
       </p>
@@ -314,29 +312,29 @@ const navigations = [
         Here, we clicked the button and updated the state using <span
           class="font-semibold"
           >setCount((c) ={">"}
-          c + 1)</span
+           c + 1)</span
         >. React will acknowledge this and update the latestCount from 0 to 1,
         but the count value is still 0. Then, we again passed <span
           class="font-semibold"
           >setCount((c) ={">"}
-          c + 1)</span
-        > and told React to update the state. Now, the latestCount becomes 2, and
-        the count remains 0. But how latestCount becomes 2? It’s because we update
-        the state using a function. <span class="font-semibold"
+           c + 1)</span
+        > and told React to update the state. Now, the latestCount becomes 2,
+        and the count remains 0. But how latestCount becomes 2? It’s because we
+        update the state using a function. <span class="font-semibold"
           >(c)={">"} c + 1</span
-        > This is passed in the setState, and here, c is not count, c is referred
-        to as latestCount, so when the setState is called 2nd time with the latestCount,
-        the latestCount value is increased. Then again, we called setState 3rd time,
-        so the latestCount is updated to 3 from 2. Thus, the final count value becomes
-        3 in the next render.
+        > This is passed in the setState, and here, c is not count, c is
+        referred to as latestCount, so when the setState is called 2nd time with
+        the latestCount, the latestCount value is increased. Then again, we
+        called setState 3rd time, so the latestCount is updated to 3 from 2.
+        Thus, the final count value becomes 3 in the next render.
       </p>
       <Code code={C19} lang="js" />
       <p>
         That is why if you update the state using a value, i.e., calling
-        <span class="font-semibold">setState(count + 1)</span> 100 times, the final
-        value will only be increased by 1 and not by 100 because every time, you
-        are passing count in setState. But if you update the state using functions,
-        i.e., calling <span class="font-semibold"
+        <span class="font-semibold">setState(count + 1)</span> 100 times, the
+        final value will only be increased by 1 and not by 100 because every
+        time, you are passing count in setState. But if you update the state
+        using functions, i.e., calling <span class="font-semibold"
           >setState((c) ={">"} c + 1)</span
         > 100 times, then the final value is updated by 100 and not by 1 because
         here you are passing latestCount (c)and not the count value every time.
@@ -430,6 +428,7 @@ const navigations = [
         This is pretty straightforward, but let’s understand if you need to. We
         know that useState provides <span class="font-semibold">count</span> and
 
+
         <span class="font-semibold">setCount</span>, where setCount is a setter
         function. We can update the state by <span class="font-semibold"
           >setCount(count + 1)</span
@@ -437,12 +436,12 @@ const navigations = [
         also pass the function to update the state, such as <span
           class="font-semibold"
           >useState((prevCount) ={">"}
-          prevCount + 1)</span
-        >. So, in the <span class="font-semibold">reducer</span> function, we will
-        first identify whether we are passing a function or direct value. If we pass
-        direct value, we will update the state, or else if we pass the function,
-        then we will call that function with the <span class="font-semibold"
-          >currentState</span
+           prevCount + 1)</span
+        >. So, in the <span class="font-semibold">reducer</span> function, we
+        will first identify whether we are passing a function or direct value.
+        If we pass direct value, we will update the state, or else if we pass
+        the function, then we will call that function with the <span
+          class="font-semibold">currentState</span
         > as a parameter.
       </p>
       <p>
@@ -484,7 +483,11 @@ const navigations = [
         interviewer asks you questions on useState and useReducer, you will kill
         it!
       </p>
-      <Conclusion />
+      <Conclusion
+        title={blogTitle}
+        url="understanding-react-local-state-the-right-way"
+        category="tech"
+      />
     </Content>
   </Container>
   <Footer />

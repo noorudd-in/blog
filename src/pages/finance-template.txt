@@ -8,14 +8,6 @@ import Footer from "../../layouts/Footer.astro";
 import Disclaimer from "../../layouts/Disclaimer.astro";
 import LINK from "../../layouts/LINK.astro";
 import Conclusion from "../../layouts/Conclusion.astro";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.finance[""] =
-  data.finance[""] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "";
 const blogDescription = "";
@@ -30,13 +22,14 @@ const readingTime = 2;
       title={blogTitle}
       subtitle={blogDate}
       readingTime={readingTime}
-      views={data?.finance[""]}
     />
     <Disclaimer />
     <Content>
       <p>Hello</p>
       <h2 id=""></h2>
-       <Conclusion />
+       <Conclusion title={blogTitle}
+      url=""
+      category="finance" />
     </Content>
   </Container>
   <Footer />

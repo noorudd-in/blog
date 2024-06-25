@@ -1,11 +1,16 @@
 ---
 import LINK from "./LINK.astro";
+const { title, url, category } = Astro.props;
+let twitter = `https://twitter.com/intent/tweet?text=Checkout this amazing blog by @noorudd_in on ${title}. &url=https://blog.noorudd.in/${category}/${url}`;
 ---
 
 <p class="italic" id="conclusion">
-  If you've enjoyed reading this blog and have learnt at least one new thing, do <LINK
-    text="subscribe"
-    url="/subscribe"
-    target="_self"
-  /> to recieve updates whenever I post a new article directly to your inbox.
+  If you've enjoyed reading this blog and have learnt at least one new thing, do
+
+
+  <LINK text="subscribe" url="/subscribe" target="_self" /> to recieve updates
+  whenever I post a new article directly to your inbox and do share on <LINK
+    text="Twitter"
+    url={twitter}
+  /> with your friends.
 </p>

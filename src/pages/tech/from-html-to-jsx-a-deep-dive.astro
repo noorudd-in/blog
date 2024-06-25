@@ -26,14 +26,6 @@ import {
   C13,
   C14,
 } from "../../snippets/from-html-to-jsx-a-deep-dive";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.tech["from-html-to-jsx-a-deep-dive"] =
-  data.tech["from-html-to-jsx-a-deep-dive"] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "From HTML to JSX - A Deep Dive";
 const blogDescription =
@@ -64,7 +56,6 @@ const navigations = [
       title={blogTitle}
       subtitle={blogDate}
       readingTime={readingTime}
-      views={data?.tech["from-html-to-jsx-a-deep-dive"]}
     />
     <Tags tags={tags} />
     <Content>
@@ -94,7 +85,7 @@ const navigations = [
         evolved, the responses tended to be in JSON instead. This is why <span
           class="font-semibold">fetch</span
         >
-        has overtaken <span class="font-semibold">XMLHttpRequest</span>.
+         has overtaken <span class="font-semibold">XMLHttpRequest</span>.
       </p>
       <p>
         JSX which you may have heard of while learning React, is a syntax
@@ -107,7 +98,8 @@ const navigations = [
       </p>
       <p>
         JSX will help us to write the JavaScript within your HTML. To do this,
-        you will need the curly braces {"{ }"} to embed any JavaScript code you need.
+        you will need the curly braces {"{ }"} to embed any JavaScript code you
+        need.
       </p>
       <Code code={C1} lang="html" />
       <p>
@@ -120,8 +112,8 @@ const navigations = [
           >onclick</code
         > will become <code>onClick</code>, <code>tabindex</code> becomes
         <code>tabIndex</code>, and so on. Some attributes like <code>for</code>
-        becomes <code>htmlFor</code>, <code>class</code>
-        becomes <code>className</code>.
+         becomes <code>htmlFor</code>, <code>class</code>
+         becomes <code>className</code>.
       </p>
       <p>Normal HTML</p>
       <Code code={C3} lang="html" />
@@ -131,9 +123,9 @@ const navigations = [
         One thing to note is, that all the HTML elements must be lowercase. JSX
         will treat <code>{"<div>"}</code> as an HTML element but <code
           >{"<Div>"}
-        </code> or <code>{"<DIV>"}</code> will be treated as a React Component. That's
-        why all React components start with a Capital Letter so JSX & React can differentiate
-        between HTML Elements and React Components.
+        </code> or <code>{"<DIV>"}</code> will be treated as a React Component.
+        That's why all React components start with a Capital Letter so JSX &
+        React can differentiate between HTML Elements and React Components.
       </p>
       <h2 id="react-without-jsx">React without JSX?</h2>
       <p>
@@ -329,7 +321,8 @@ const navigations = [
         generate plain old regular vanilla JavaScript that all current engines
         can understand. This is precisely what <span
           class="italic font-semibold">Babel</span
-        > in the JavaScript ecosystem does, along with other tools like TypeScript.
+        > in the JavaScript ecosystem does, along with other tools like
+        TypeScript.
       </p>
       <img
         src="https://res.cloudinary.com/dfwyvvvdp/image/upload/v1712179764/blogs/engine_vs_jsx_u8yqec.jpg"
@@ -343,9 +336,9 @@ const navigations = [
       <QUOTE>Transpilation: Transform (trans) + Compile (pile)</QUOTE>
       <h2 id="the-jsx-logic">The JSX Logic</h2>
       <p>
-        It all starts with <code>{"<"}</code> which is not recognised in JavaScript
-        other than compariosn operator. When JavaScript encounters this, it will
-        of course throw an error: <code
+        It all starts with <code>{"<"}</code> which is not recognised in
+        JavaScript other than compariosn operator. When JavaScript encounters
+        this, it will of course throw an error: <code
           >{"SyntaxError: Unexpected token '<' "}
         </code>. But when JSX transpiles this, it will perform a function call.
         Because of JSX transpilation, the compiler will know how it should
@@ -380,9 +373,9 @@ const navigations = [
       </p>
       <Code code={C13} lang="js" />
       <p>
-        This will render <code>Is number even? YES</code> since the comparison is
-        an evaluated expression. However, it's not possible to execute statements
-        inside of a JSX element tree. This will not work:
+        This will render <code>Is number even? YES</code> since the comparison
+        is an evaluated expression. However, it's not possible to execute
+        statements inside of a JSX element tree. This will not work:
       </p>
       <Code code={C14} lang="js" />
       <p>
@@ -395,7 +388,11 @@ const navigations = [
         How is our renderer supposed to know we intend to print <code>EVEN</code
         >? This is why expressions are evaluated, but statements are not.
       </p>
-      <Conclusion />
+      <Conclusion
+        title={blogTitle}
+        url="from-html-to-jsx-a-deep-dive"
+        category="tech"
+      />
     </Content>
   </Container>
   <Footer />

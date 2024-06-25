@@ -7,14 +7,6 @@ import Content from "../../layouts/Content.astro";
 import Tags from "../../layouts/Tags.astro";
 import Footer from "../../layouts/Footer.astro";
 import Conclusion from "../../layouts/Conclusion.astro";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.tech["we-work-at-faang-for-free"] =
-  data.tech["we-work-at-faang-for-free"] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "We work at FAANG for free";
 const blogDescription =
@@ -32,7 +24,6 @@ const tags = ["Big Data"];
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://medium.com/vieh-group/we-work-at-faang-for-free-ebaa5bf361e6"
-      views={data?.tech["we-work-at-faang-for-free"]}
     />
     <Tags tags={tags} />
     <Content>
@@ -82,7 +73,11 @@ const tags = ["Big Data"];
         After all, in this internet world we are building, our data shouldn’t be
         distributed for free.
       </p>
-      <Conclusion />
+      <Conclusion
+        title={blogTitle}
+        url="we-work-at-faang-for-free"
+        category="tech"
+      />
     </Content>
   </Container>
   <Footer />

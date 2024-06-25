@@ -9,14 +9,6 @@ import Tags from "../../layouts/Tags.astro";
 import Conclusion from "../../layouts/Conclusion.astro";
 import Navigation from "../../layouts/Navigation.astro";
 import LINK from "../../layouts/LINK.astro";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.tech[""] =
-  data.tech[""] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "";
 const blogDescription = "";
@@ -33,14 +25,15 @@ const navigations = [{ label: "", id: "" },];
       title={blogTitle}
       subtitle={blogDate}
       readingTime={readingTime}
-      views={data?.tech[""]}
     />
     <Tags tags={tags} />
     <Content>
     <Navigation data={navigations} />
       <p>Hello</p>
        <h2 id=""></h2>
-       <Conclusion />
+       <Conclusion title={blogTitle}
+      url=""
+      category="tech" />
     </Content>
   </Container>
   <Footer />

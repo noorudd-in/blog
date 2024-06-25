@@ -1,36 +1,12 @@
 ---
 const { title, subtitle, readingTime, medium, views } = Astro.props;
-let totalViews = views.toString();
-let len = totalViews.length;
-let parsedViews = totalViews;
-if (len == 5 && totalViews[2] > 0) {
-  parsedViews = totalViews.slice(0, 2) + "." + totalViews[2] + "K";
-}
-if (len == 5 && totalViews[2] == 0) {
-  parsedViews = totalViews.slice(0, 2) + "K";
-}
-if (len == 6 && totalViews[3] > 0) {
-  parsedViews = totalViews.slice(0, 3) + "." + totalViews[3] + "K";
-}
-if (len == 6 && totalViews[3] == 0) {
-  parsedViews = totalViews.slice(0, 3) + "K";
-}
-if (len == 7 && totalViews[1] > 0) {
-  parsedViews = totalViews[0] + "." + totalViews[1] + "M";
-}
-if (len == 7 && totalViews[1] == 0) {
-  parsedViews = totalViews[0] + "M";
-}
-if (len > 7) {
-  parsedViews = totalViews.slice(0, len - 6) + "M";
-}
 ---
 
 <div class="mt-5 sm:mt-4 mb-5">
   <h1 class="text-white font-bold mb-2 sm:text-7xl text-3xl">
     {title}
   </h1>
-  <div class="flex">
+  <div class="flex flex-wrap">
     {
       readingTime && (
         <>
@@ -44,19 +20,23 @@ if (len > 7) {
     <div class="text-neutral-400 sm:text-xl text-md">
       {subtitle}
     </div>
+
     {
-      (
+      /* 
+    {
+      views && (
         <div class="flex">
           <div class="text-neutral-400 sm:text-xl text-md mx-2">&#183;</div>
-          <div class="text-neutral-400 sm:text-xl text-md flex">
+          <div class="text-neutral-400 sm:text-xl text-md">
             <svg
-              class="sm:w-7 sm:h-8 w-6 h-6 text-neutral-400"
+              class="sm:w-7 sm:h-7 w-6 h-6 text-neutral-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               fill="none"
-              viewBox="0 0 24 24">
+              viewBox="0 0 24 24"
+            >
               <path
                 stroke="currentColor"
                 stroke-width="2"
@@ -68,13 +48,14 @@ if (len > 7) {
                 d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
               />
             </svg>
-            <span class="ml-2">{parsedViews}</span>
           </div>
         </div>
       )
     }
-    {
-      /* 
+
+    */
+    }
+
     {
       medium && (
         <div class="flex">
@@ -91,8 +72,6 @@ if (len > 7) {
           </div>
         </div>
       )
-    }
-    */
     }
   </div>
 </div>

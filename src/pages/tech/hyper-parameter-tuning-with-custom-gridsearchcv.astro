@@ -23,14 +23,6 @@ import {
   C10,
   C11,
 } from "../../snippets/hyper-parameter-tuning-with-custom-gridsearchcv";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.tech["hyper-parameter-tuning-with-custom-gridsearchcv"] =
-  data.tech["hyper-parameter-tuning-with-custom-gridsearchcv"] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "Hyper-parameter Tuning with Custom GridSearchCV";
 const blogDescription =
@@ -57,7 +49,6 @@ const navigations = [
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://medium.com/codex/hyper-parameter-tuning-with-custom-gridsearchcv-d5212f218cc0"
-      views={data?.tech["hyper-parameter-tuning-with-custom-gridsearchcv"]}
     />
     <Tags tags={tags} />
     <Content>
@@ -67,6 +58,7 @@ const navigations = [
         i.e. training(70% usually) and testing(30% usually) datasets. If we are
         working on a classification problem where we have X as a feature and Y
         as a label, we split data as <span class="font-semibold">X_train</span>,
+
 
         <span class="font-semibold">X_test</span>, and <span
           class="font-semibold">Y_train</span
@@ -153,19 +145,20 @@ const navigations = [
       <p class="text-am">
         We will be using <span class="highlight">make_classification</span> from
 
-        <span class="highlight">sklearn.datasets</span> which will help us to create
-        clusters of points (for classification problem) with various parameters such
-        as <span class="highlight">n_samples</span> for the number of samples, <span
-          class="highlight">n_features</span
-        >
-        defines the number of features that we want, <span class="highlight"
+
+        <span class="highlight">sklearn.datasets</span> which will help us to
+        create clusters of points (for classification problem) with various
+        parameters such as <span class="highlight">n_samples</span> for the
+        number of samples, <span class="highlight">n_features</span>
+         defines the number of features that we want, <span class="highlight"
           >n_informative</span
         > defines which features you want to be informative, <span
           class="highlight">n_redundant defines</span
         > which features you want to be redundant or useless, <span
           class="highlight">random_state</span
-        > if set to any specific number will return the same random data every time
-        which helps you to share the same randomly selected data with anyone.
+        > if set to any specific number will return the same random data every
+        time which helps you to share the same randomly selected data with
+        anyone.
       </p>
       <Code code={C2} lang="py" />
       <p>
@@ -180,8 +173,9 @@ const navigations = [
         The first for loop will take different values of K which is stored in a
         variable parameter as a set of lists.parameter={
           `{'n_neighbors':[1,3,5,7,9,11,13,15,17,19,21,23,25,27,29]}`
-        } We will iterate K from 1 to 30 odd numbers since in KNN if K is even, deciding
-        the class label will be difficult if we get an even number of neighbors.
+        } We will iterate K from 1 to 30 odd numbers since in KNN if K is even,
+        deciding the class label will be difficult if we get an even number of
+        neighbors.
       </p>
       <Code code={C4} lang="py" />
       <p>
@@ -270,12 +264,16 @@ const navigations = [
           text="GitHub"
           url="https://github.com/noor12401/Machine-Learning/tree/main/Implementing%20Custom%20GridSearchCV"
         />
-        or <LINK
+         or <LINK
           text="Colab"
           url="https://colab.research.google.com/drive/1LVt0p07240f21pJPv2stvTrF6JwfNOZy?usp=sharing"
         />
       </p>
-      <Conclusion />
+      <Conclusion
+        title={blogTitle}
+        url="hyper-parameter-tuning-with-custom-gridsearchcv"
+        category="tech"
+      />
     </Content>
   </Container>
   <Footer />

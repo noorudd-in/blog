@@ -9,14 +9,6 @@ import Tags from "../../layouts/Tags.astro";
 import LINK from "../../layouts/LINK.astro";
 import QUOTE from "../../layouts/QUOTE.astro";
 import Conclusion from "../../layouts/Conclusion.astro";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.tech["quantum-computers-can-stop-time"] =
-  data.tech["quantum-computers-can-stop-time"] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "Quantum Computers can stop time!";
 const blogDescription =
@@ -34,7 +26,6 @@ const tags = ["Quantum Computing", "Machine Learning"];
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://medium.com/vieh-group/quantum-computers-can-stop-time-487bc5af462"
-      views={data?.tech["quantum-computers-can-stop-time"]}
     />
     <Tags tags={tags} />
     <Content>
@@ -51,8 +42,8 @@ const tags = ["Quantum Computing", "Machine Learning"];
         teams, recently graced the <LINK
           text="arXiv preprint"
           url="https://arxiv.org/"
-        /> servers. They’re both basically about the same thing: using clever algorithms
-        to solve nonlinear differential equations.
+        /> servers. They’re both basically about the same thing: using clever
+        algorithms to solve nonlinear differential equations.
       </p>
       <p>
         And if you observe like a squint at them through the lens of Soft
@@ -182,7 +173,11 @@ const tags = ["Quantum Computing", "Machine Learning"];
         resistant world, solving problems at nearly infinitely small moment of
         time which can literally break or stop the time to affect it.
       </p>
-      <Conclusion />
+      <Conclusion
+        title={blogTitle}
+        url="quantum-computers-can-stop-time"
+        category="tech"
+      />
     </Content>
   </Container>
   <Footer />

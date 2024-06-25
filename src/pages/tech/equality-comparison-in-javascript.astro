@@ -9,14 +9,6 @@ import Tags from "../../layouts/Tags.astro";
 import LINK from "../../layouts/LINK.astro";
 import QUOTE from "../../layouts/QUOTE.astro";
 import Conclusion from "../../layouts/Conclusion.astro";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.tech["equality-comparison-in-javascript"] =
-  data.tech["equality-comparison-in-javascript"] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "The real difference between == and === in JavaScript";
 const blogDescription =
@@ -34,7 +26,6 @@ const tags = ["Programming"];
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://noorudd-in.medium.com/the-real-difference-between-and-in-js-fde78f04b44f"
-      views={data?.tech["equality-comparison-in-javascript"]}
     />
     <Tags tags={tags} />
     <Content>
@@ -123,7 +114,11 @@ const tags = ["Programming"];
         so JS need to first check the types of both the operands. Without
         checking types, JS cannot just convert the types randomly.
       </p>
-      <Conclusion />
+      <Conclusion
+        title={blogTitle}
+        url="equality-comparison-in-javascript"
+        category="tech"
+      />
     </Content>
   </Container>
   <Footer />

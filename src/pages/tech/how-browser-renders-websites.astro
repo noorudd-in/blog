@@ -12,14 +12,6 @@ import Conclusion from "../../layouts/Conclusion.astro";
 import Navigation from "../../layouts/Navigation.astro";
 import { Code } from "astro-expressive-code/components";
 import { C1, C2 } from "../../snippets/how-browser-renders-websites.js";
-import axios from "axios";
-
-const response = await axios.get(import.meta.env.API_URL);
-const data = response.data;
-const newData = { ...data };
-newData.tech["how-browser-renders-websites"] =
-  data.tech["how-browser-renders-websites"] + 1;
-axios.post(import.meta.env.API_URL, newData);
 
 const blogTitle = "How browser renders websites?";
 const blogDescription = "All about BOM and DOM painting.";
@@ -44,7 +36,6 @@ const navigations = [
       subtitle={blogDate}
       readingTime={readingTime}
       medium="https://noorudd-in.medium.com/how-browser-renders-websites-3a957f51925b"
-      views={data?.tech["how-browser-renders-websites"]}
     />
     <Tags tags={tags} />
     <Content>
@@ -79,7 +70,8 @@ const navigations = [
         />, which is used by Chromium (Chrome-based browsers), or <LINK
           text="Webkit"
           url="https://webkit.org/"
-        /> which is used by Safari, Apple are some of the popular browser engines.
+        /> which is used by Safari, Apple are some of the popular browser
+        engines.
       </p>
       <p>
         You can even check the <LINK
@@ -208,9 +200,9 @@ const navigations = [
         Whenever a DOM tree is created and if the browser encounters a {
           '<script scr="script.js"></script>'
         } tag, the DOM creation is paused and halted at that point. Why? Because
-        JavaScript has the ability to manipulate the DOM elements. The browser first
-        reads the content of the JavaScript file, then the DOM is resumed, and changes
-        are made based on both the HTML and JS content.
+        JavaScript has the ability to manipulate the DOM elements. The browser
+        first reads the content of the JavaScript file, then the DOM is resumed,
+        and changes are made based on both the HTML and JS content.
       </p>
       <QUOTE>
         This is why, it is advised to place the script tag after the body or at
@@ -226,7 +218,7 @@ const navigations = [
       <Code code={C1} lang="html" />
       <p>
         Here, the alert will not be created because the element {"<h1>"}
-        with the ID name, the script is trying to access is not created yet!
+         with the ID name, the script is trying to access is not created yet!
       </p>
       <p>
         This matters because if there happens to be a heavy JS file where lots
@@ -250,7 +242,11 @@ const navigations = [
         delayed to reduce the latency of our webpage as low as possible to load
         the website much faster.
       </p>
-      <Conclusion />
+      <Conclusion
+        title={blogTitle}
+        url="how-browser-renders-websites"
+        category="tech"
+      />
     </Content>
     <Footer />
   </Container>
