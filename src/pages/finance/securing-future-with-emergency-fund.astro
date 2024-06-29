@@ -21,6 +21,7 @@ const readingTime = 5;
       title={blogTitle}
       subtitle={blogDate}
       readingTime={readingTime}
+      viewId="securing-future-with-emergency-fund"
     />
     <Disclaimer />
     <Content>
@@ -413,8 +414,8 @@ const handleCalculate = () => {
     finalAmount.innerText = res;
   } else {
     finalAmount.innerText = final;
-    }
-  };
+  }
+};
 
-  calculate.addEventListener("click", handleCalculate);
+calculate.addEventListener("click", handleCalculate);
 </script>

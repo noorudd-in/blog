@@ -1,5 +1,5 @@
 ---
-const { title, subtitle, readingTime, medium, views } = Astro.props;
+const { title, subtitle, readingTime, medium, viewId } = Astro.props;
 ---
 
 <div class="mt-5 sm:mt-4 mb-5">
@@ -22,12 +22,10 @@ const { title, subtitle, readingTime, medium, views } = Astro.props;
     </div>
 
     {
-      /* 
-    {
-      views && (
+      (
         <div class="flex">
           <div class="text-neutral-400 sm:text-xl text-md mx-2">&#183;</div>
-          <div class="text-neutral-400 sm:text-xl text-md">
+          <div class="text-neutral-400 sm:text-xl text-md flex">
             <svg
               class="sm:w-7 sm:h-7 w-6 h-6 text-neutral-400"
               aria-hidden="true"
@@ -48,14 +46,16 @@ const { title, subtitle, readingTime, medium, views } = Astro.props;
                 d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
               />
             </svg>
+            <span class="ml-1" id={viewId}>
+              0
+            </span>
           </div>
         </div>
       )
     }
 
-    */
-    }
-
+    {
+      /*
     {
       medium && (
         <div class="flex">
@@ -73,5 +73,135 @@ const { title, subtitle, readingTime, medium, views } = Astro.props;
         </div>
       )
     }
+    */
+    }
   </div>
 </div>
+
+<script>
+  const response = await fetch("https://api.noorudd.in/blog");
+  const data = await response.json();
+  const postData = async (newData) => {
+    const response = await fetch("https://api.noorudd.in/blog", {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify(newData),
+    });
+    return response;
+  };
+  const getViews = (views) => {
+    let totalViews = views.toString();
+    let len = totalViews.length;
+    let parsedViews = totalViews;
+    if (len == 5 && totalViews[2] > 0) {
+      parsedViews = totalViews.slice(0, 2) + "." + totalViews[2] + "K";
+    }
+    if (len == 5 && totalViews[2] == 0) {
+      parsedViews = totalViews.slice(0, 2) + "K";
+    }
+    if (len == 6 && totalViews[3] > 0) {
+      parsedViews = totalViews.slice(0, 3) + "." + totalViews[3] + "K";
+    }
+    if (len == 6 && totalViews[3] == 0) {
+      parsedViews = totalViews.slice(0, 3) + "K";
+    }
+    if (len == 7 && totalViews[1] > 0) {
+      parsedViews = totalViews[0] + "." + totalViews[1] + "M";
+    }
+    if (len == 7 && totalViews[1] == 0) {
+      parsedViews = totalViews[0] + "M";
+    }
+    if (len > 7) {
+      parsedViews = totalViews.slice(0, len - 6) + "M";
+    }
+    console.log(parsedViews);
+    return parsedViews;
+  };
+
+  // Catch
+  let tp8 = document.getElementById(
+    "understanding-react-local-state-the-right-way"
+  );
+  let tp7 = document.getElementById("from-html-to-jsx-a-deep-dive");
+  let tp6 = document.getElementById("how-browser-renders-websites");
+  let tp5 = document.getElementById("equality-comparison-in-javascript");
+  let tp4 = document.getElementById(
+    "hyper-parameter-tuning-with-custom-gridsearchcv"
+  );
+  let tp3 = document.getElementById("is-data-science-a-hype");
+  let tp2 = document.getElementById("quantum-computers-can-stop-time");
+  let tp1 = document.getElementById("we-work-at-faang-for-free");
+
+  let fp1 = document.getElementById("securing-future-with-emergency-fund");
+
+  // Update
+  if (tp8) {
+    tp8.textContent = getViews(
+      data.tech["understanding-react-local-state-the-right-way"]
+    );
+    let newData = { ...data };
+    newData.tech["understanding-react-local-state-the-right-way"] += 1;
+    postData(newData);
+  }
+  if (tp7) {
+    tp7.textContent = getViews(data.tech["from-html-to-jsx-a-deep-dive"]);
+    let newData = { ...data };
+    newData.tech["from-html-to-jsx-a-deep-dive"] += 1;
+    postData(newData);
+  }
+  if (tp6) {
+    tp6.textContent = getViews(data.tech["how-browser-renders-websites"]);
+    let newData = { ...data };
+    newData.tech["how-browser-renders-websites"] += 1;
+    postData(newData);
+  }
+  if (tp5) {
+    tp5.textContent = getViews(data.tech["equality-comparison-in-javascript"]);
+    let newData = { ...data };
+    newData.tech["equality-comparison-in-javascript"] += 1;
+    postData(newData);
+  }
+  if (tp4) {
+    tp4.textContent = getViews(
+      data.tech["hyper-parameter-tuning-with-custom-gridsearchcv"]
+    );
+
+    let newData = { ...data };
+    newData.tech["hyper-parameter-tuning-with-custom-gridsearchcv"] += 1;
+    postData(newData);
+  }
+  if (tp3) {
+    tp3.textContent = getViews(data.tech["is-data-science-a-hype"]);
+    let newData = { ...data };
+    newData.tech["is-data-science-a-hype"] += 1;
+    postData(newData);
+  }
+  if (tp2) {
+    tp2.textContent = getViews(data.tech["quantum-computers-can-stop-time"]);
+    let newData = { ...data };
+    newData.tech["quantum-computers-can-stop-time"] += 1;
+    postData(newData);
+  }
+  if (tp1) {
+    tp1.textContent = getViews(data.tech["we-work-at-faang-for-free"]);
+    let newData = { ...data };
+    newData.tech["we-work-at-faang-for-free"] += 1;
+    postData(newData);
+  }
+  //Finance
+  if (fp1) {
+    fp1.textContent = getViews(
+      data.finance["securing-future-with-emergency-fund"]
+    );
+    let newData = { ...data };
+    newData.finance["securing-future-with-emergency-fund"] += 1;
+    postData(newData);
+  }
+</script>

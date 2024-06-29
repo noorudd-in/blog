@@ -22,6 +22,7 @@ const readingTime = 2;
       title={blogTitle}
       subtitle={blogDate}
       readingTime={readingTime}
+      viewId=''
     />
     <Disclaimer />
     <Content>

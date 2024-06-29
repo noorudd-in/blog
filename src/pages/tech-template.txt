@@ -25,6 +25,7 @@ const navigations = [{ label: "", id: "" },];
       title={blogTitle}
       subtitle={blogDate}
       readingTime={readingTime}
+      viewId=''
     />
     <Tags tags={tags} />
     <Content>
