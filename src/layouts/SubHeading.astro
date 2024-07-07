@@ -22,7 +22,7 @@ const { title, subtitle, readingTime, medium, viewId } = Astro.props;
     </div>
 
     {
-      (
+      viewId && (
         <div class="flex">
           <div class="text-neutral-400 sm:text-xl text-md mx-2">&#183;</div>
           <div class="text-neutral-400 sm:text-xl text-md flex">
